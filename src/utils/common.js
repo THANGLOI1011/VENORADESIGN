@@ -1,5 +1,5 @@
 export const SliderSettings = {
-    SlidesPerWiev : 1,
+    SlidesPerView : 1,
     spaceBetween: 50,
     breakpoints:{
         480:{

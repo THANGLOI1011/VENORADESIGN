@@ -3,16 +3,16 @@ import './Getstarted.css'
 const Getstarted = () => {
   return (
     <div>
-      <section className='g-wrapper'>
+      <section id='started' className='g-wrapper'>
         <div className="paddings innerWidth g-container">
             <div className="flexColCenter inner-container">
-                <span className='primaryText'>Get started with Homyz</span>
-                <span className='secondaryText'>Subcribe and find super attractive pricw quotes from us.
+                <span className='primaryText'>Bắt Đầu Với VenoraDesign</span>
+                <span className='secondaryText text'>Hãy liên hệ với chúng tôi để được tư vấn và  
                     <br />
-                    Find your residence soon
+                    nhận ưu đãi siêu hấp dẫn.
                 </span>
                 <button className='button'>
-                    <a href='#'>Get Started</a>
+                    <a href='#'>Bắt Đầu</a>
                 </button>
             </div>
         </div>

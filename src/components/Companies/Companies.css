@@ -5,3 +5,12 @@
 .c-container>img{
     width: 9rem;
 }
+.c-wrapper{
+    display: flex;
+    justify-content: center;
+}
+.text-c-wrapper{
+    font-size: 1.2rem;
+    color: #8c8b8b;
+    font-weight: 550;
+}

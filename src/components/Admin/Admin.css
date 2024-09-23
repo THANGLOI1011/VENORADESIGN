@@ -1,0 +1,194 @@
+/* Admin.css */
+
+.admin-container {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 125px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin-container h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .admin-container p {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .logout-button {
+    background-color: #ff5b5b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+  }
+  
+  .logout-button:hover {
+    background-color: #e74c3c;
+  }
+  
+  .admin-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .admin-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .admin-form input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .add-image-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .add-image-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .admin-form button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .admin-form button[type="submit"]:hover {
+    background-color: #218838;
+  }
+  
+  .admin-projects {
+    margin-top: 20px;
+  }
+  
+  .admin-projects h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .admin-projects ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .admin-projects li {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin-projects img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .admin-projects button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+  }
+  
+  .admin-projects button:hover {
+    background-color: #c82333;
+  }
+  
+  .image-input-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .image-input-wrapper input {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .image-input-wrapper button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .image-input-wrapper button:hover {
+    background-color: #0056b3;
+  }
+  .admin-projects button:hover {
+    background-color: #0056b3;
+  }
+  
+  .admin-projects button.delete {
+    background-color: #dc3545;
+  }
+  
+  .admin-projects button.delete:hover {
+    background-color: #c82333;
+  }
+.btn-logout{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+#delete{
+    background-color: rgb(231, 43, 43);
+    margin-top: 20px;
+}
+#edit{
+    background-color: rgb(26, 26, 238);
+    margin-right: 15px;
+    margin-top: 20px;
+}
+.btnadd{
+  margin-right: 10px;
+}

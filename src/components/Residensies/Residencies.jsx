@@ -1,46 +1,72 @@
-import React from 'react'
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react'
-import 'Swiper/css'
-import './Residencies.css'
-import data from '../../utils/slider.json'
-import { SliderSettings } from '../../utils/common'
+import React, { useEffect, useState } from 'react';
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import 'Swiper/css';
+import './Residencies.css';
+import { HiLocationMarker } from 'react-icons/hi';
+import { Link, useNavigate } from 'react-router-dom';
+import { getDatabase, ref, onValue } from "firebase/database"; 
+import { SliderSettings } from '../../utils/common';
+
 const Residencies = () => {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    const db = getDatabase();
+    const projectsRef = ref(db, 'products'); 
+
+    onValue(projectsRef, (snapshot) => {
+      const data = snapshot.val();
+      const projectsArray = Object.values(data || {}); 
+      setProjects(projectsArray.slice(0, 5)); 
+    });
+  }, []);
+
   return (
-   <section className='r-wrapper'>
-    <div className=' paddings innerWidth r-container'>
+    <section id='typical' className='r-wrapper'>
+      <div className='paddings innerWidth r-container'>
         <div className="r-head flexColStart">
-            <span className='orangeText'>Best Choise</span>
-            <span className='primaryText'>Popular Residencis</span>
+          <span className='orangeText'>Dự Án Tiêu Biểu</span>
+          <span className='primaryText'>Xây Dựng Tiêu Biểu</span>
         </div>
         <Swiper {...SliderSettings}>
-            <SliderButtons></SliderButtons>
-            {
-                data.map((card, i)=>(
-                    <SwiperSlide key={i}>
-                        <div className=' flexColStart r-card'>
-                            <img src={card.image} alt="home" />
-                            <span className='secondaryText r-price'>
-                            <span style={{color:'orange'}}>$</span><span>{card.price}</span>
-                            </span>
-                            <span className='primaryText r-title'>{card.name}</span>
-                            <span className='secondaryText'>{card.detail}</span>
-                        </div>
-                    </SwiperSlide>
-                ))
-            }
+          <SliderButtons />
+          {projects.map((project, i) => (
+            <SwiperSlide key={i}>
+              <Link 
+                to={`/product/${project.id}`} 
+                state={{ product: project }} 
+                className='flexColStart r-card'
+                onClick={() => window.scrollTo(0, 0)}  // Cuộn lên đầu trang khi nhấn
+              >
+                <img src={project.image} alt={project.name} />
+                <span className='secondaryText r-price flexCenter'>
+                  <HiLocationMarker style={{color:'var(--text-yellow)'}} />
+                  <span>{project.add}</span>
+                </span>
+                <span className='primaryText r-title'>{project.name}</span>
+                <span className='secondaryText'>Diện tích: {project.size}m&#178;</span>
+              </Link>
+            </SwiperSlide>
+          ))}
+          <SwiperSlide>
+            <div className='r-card-view-more'>
+              <Link to="/products" className="button">View More</Link>
+            </div>
+          </SwiperSlide>
         </Swiper>
-    </div>
-   </section>
-  )
-}
+      </div>
+    </section>
+  );
+};
 
-export default Residencies
+export default Residencies;
+
 const SliderButtons = () => {
-    const swiper = useSwiper();
-    return(
-        <div className=' flextCenter r-buttons'>
-            <button onClick={() => swiper.slidePrev()}>&lt;</button>
-            <button onClick={() => swiper.slideNext()}>&gt;</button>
-        </div>
-    );
-}
+  const swiper = useSwiper();
+  return (
+    <div className='flexCenter r-buttons'>
+      <button onClick={() => swiper.slidePrev()}>&lt;</button>
+      <button onClick={() => swiper.slideNext()}>&gt;</button>
+    </div>
+  );
+};

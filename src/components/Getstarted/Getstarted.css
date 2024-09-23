@@ -1,8 +1,8 @@
 .inner-container{
     gap: 1.5rem;
-    background: #4161df;
+    background: var(--green-button);
     border-radius: 10px;
-    border: 5px solid #5d77d6;
+    border: 5px solid rgb(232 232 232 / 93%);
     padding: 2rem;
 }
 .inner-container .primaryText{
@@ -14,8 +14,12 @@
     color: rgba(255, 255, 255, 0.587);
 }
 .inner-container .button{
-    background-color: #5a73d7;
+    background-color: #058741;
     border: 2px solid #fff;
     box-shadow: var(--shadow);
     border-radius: 10px;
+}
+.text{
+    align-items: center;
+    text-align: center;
 }

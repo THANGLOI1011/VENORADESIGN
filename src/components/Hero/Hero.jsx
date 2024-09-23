@@ -1,13 +1,24 @@
 import React from 'react'
 import "./Hero.css"
-import {HiLocationMarker} from 'react-icons/hi'
-import CountUp from 'react-countup'
+import Slider from "react-slick"
 import { motion } from 'framer-motion'
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 const Hero = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    rtl: true, 
+  };
   return (
     <div>
       <section className='hero-wrapper'>
-        <div className="paddings innerWidth flexCenter hero-container">
+        <div className=" flexCenter hero-container">
         <div className=" flexColStart hero-left">
           <div className="hero-title">
             <div className='orange-circle'></div>
@@ -18,48 +29,26 @@ const Hero = () => {
               duration: 2,
               type:"spring"
             }}
-            >Discover<br></br> Most Suitable <br></br> Property
+            >
+              Venora<br></br> Architects
+
             </motion.h1>
           </div>
-          <div className=" flexColStart hero-deps">
-            <span className='secondaryText'>Find a variety of properties that suit you very easilty</span>
-            <span className='secondaryText'>Forget all difficulties in finding a residence for you</span>
-          </div>
-          <div className="flexCenter search-bar">
-            <HiLocationMarker color='var(--blue)' size={25}></HiLocationMarker>
-            <input type="text" />
-            <button className='button'>Search</button>
-          </div>
-          <div className="flexCenter starts">
-            <div className="flexColCenter stat">
-              <span><CountUp start={8800} end={9000} duration={4}></CountUp><span>+</span></span>
-              <span className='secondaryText'>Premium Product</span>
-            </div>
-          {/* start 2 */}
-            <div className="flexColCenter stat">
-              <span><CountUp start={1950} end={2000} duration={4}></CountUp><span>+</span></span>
-              
-              <span className='secondaryText'>Happy Customer</span>
-            </div>
-          {/* start 3 */}
-            <div className="flexColCenter stat">
-              <span><CountUp end={28}></CountUp><span>+</span></span>
-              
-              <span className='secondaryText'>Award Winnings</span>
-            </div>
-            </div>
         </div>
-        <div className="flexCenter hero-right">
-            <motion.div
-            initial={{x: "7rem",opacity: 0}}
-            animate={{x: 0,opacity: 1}}
-            transition={{
-              duration: 2,
-              type:"spring"
-            }}
-            className="image-container">
-                <img src="./hero-image.png" alt="heroimage" />
-            </motion.div>
+        <div className="flexCenter  ">
+            <div className="image-container">
+            <Slider {...settings}>
+            <div className="image-container">
+                <img src="/hero-image.jpg" alt="heroimage1" />
+              </div>
+            <div className="image-container">
+                <img src="./value.jpg" alt="heroimage2" />
+              </div>
+              <div className="image-container">
+                <img src="./contact.jpg" alt="heroimage3" />
+              </div>
+            </Slider>  
+            </div>
         </div>
         </div>
       </section>

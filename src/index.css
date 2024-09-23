@@ -5,16 +5,19 @@
   --blue-gradient: linear-gradient(97.05deg, #4066ff 3.76%, #2949c6 100%);
   --orange-gradient: linear-gradient(270deg, #ffb978 0%, #ff922d 100%);
   --blue: #4066ff;
+  --text-yellow:#ffd000;
+  --green-button:#026d34;
   --lightBlue: #eeeeff;
   --shadow: 0px 23px 21px -8px rgba(136, 160, 255, 0.25);
+  --color-bg: #f5f5f5;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
+  font-family: "Montserrat", sans-serif;
 }
 a {
   color: inherit;
@@ -34,6 +37,12 @@ a {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+}
+.flexnowrap {
+  display: flex;
+  row-gap: 2rem;
+  justify-content: center;
+  align-items: center;
 }
 .flexStart {
   display: flex;
@@ -67,7 +76,7 @@ a {
 }
 
 .primaryText {
-  color: #1f3e72;
+  color: #17376f;
   font-weight: bold;
   font-size: 2rem;
 }
@@ -77,7 +86,7 @@ a {
   font-size: 0.9rem;
 }
 .orangeText {
-  color: orange;
+  color: var(--text-yellow);
   font-size: 1.5rem;
   font-weight: 600;
 }
@@ -85,7 +94,7 @@ a {
 font-weight: 500;
 padding: 0.6rem 1.4rem;
 color: white;
-background: var(--blue-gradient);
+background: var(--green-button);
 border: none;
 border-radius: 4px;
 transition: all 300ms ease-in;
@@ -93,6 +102,9 @@ transition: all 300ms ease-in;
 .button:hover{
   cursor: pointer;
   transform: scale(1.1);
+}
+.line-height{
+  line-height: 1.4rem;
 }
 /* media queries */
 @media (min-width: 1536px) {

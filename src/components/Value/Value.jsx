@@ -7,21 +7,14 @@ import './Value.css'
 import data from '../../utils/accordion'
 const Value = () => {
   return (
-    <section className='v-wrapper'>
-      <div className="paddings innerWidth flexCenter v-container">
-        {/* lefft side */}
-        <div className="v-left">
-          <div className="image-container">
-            <img src="./value.png" alt="" />
-          </div>
-        </div>
+    <section id='value' className='v-wrapper'>
+      <div className=" innerWidth flexCenter v-container">
+        
         {/* right- side */}
-        <div className=" flexColStart v-right">
-          <span className='orangeText'>Our Value</span>
-          <span className='primaryText'>Value We Give to You</span>
-          <span className='secondaryText'>We always ready to help byy providijing the best services for you.
-            <br />
-            We beleive a good blace to live can make life better
+        <div className=" flexColStart v-right paddings">
+          <span className='orangeText'>Về Chúng Tôi</span>
+          <span className='primaryText'>Giá Trị Trao Cho Bạn</span>
+          <span className='secondaryText line-height'>Tại Venora, chúng tôi không chỉ thiết kế nhà, mà còn kiến tạo không gian sống đẳng cấp và tinh tế. Với tầm nhìn hướng đến sự hoàn hảo, Venora cam kết mang đến cho bạn những thiết kế sáng tạo, bền vững, và chất lượng vượt trội.Venora hiện thực hóa tầm nhìn của bạn bằng những thiết kế sáng tạo, bền vững. Chúng tôi tạo nên những không gian truyền cảm hứng, vừa vận hành hiệu quả, vừa trường tồn với thời gian, đảm bảo mang đến giá trị vượt trội trong mọi dự án.
           </span>
           <Accordion className='accordion' allowZeroExpanded={false} allowMultipleExpanded={false} preExpanded={[0]}>
             {
@@ -48,7 +41,7 @@ const Value = () => {
                       </AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
-                      <p className="secondaryText">{item.detail}</p>
+                      <p className="secondaryText line-height">{item.detail}</p>
                     </AccordionItemPanel>
                   </AccordionItem>
                 )
@@ -56,6 +49,16 @@ const Value = () => {
             }
           </Accordion>
         </div>
+        {/* lefft side */}
+        <div className="v-left">
+          <div className="img-container-value">
+            <img src="./value.jpg" alt="" />
+            <div className='textslogan paddings'>
+              <h1>Đến với Venora</h1>
+              <p>"Kiến tạo không gian sống đẳng cấp với những thiết kế ấn tượng"</p>
+            </div>
+          </div>
+        </div>  
       </div>
     </section>
   )
