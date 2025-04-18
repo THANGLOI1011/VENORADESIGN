@@ -77,11 +77,20 @@ a {
 
 .primaryText {
   color: #17376f;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 2rem;
+}
+.primarytext {
+  color: #17376f;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 .secondaryText {
+  color: rgb(140 139 139);
+  font-size: 0.9rem;
+}
+.secondarytext {
   color: rgb(140 139 139);
   font-size: 0.9rem;
 }
@@ -114,23 +123,33 @@ transition: all 300ms ease-in;
   }
 }
 
-@media (min-width: 640px) {
+@media (min-width: 767px) {
   .paddings {
     padding: 4rem;
   }
 }
 
-@media (min-width: 1280px), (min-width: 768px) {
+@media (min-width: 1024px), (min-width: 767px) {
   .paddings {
     padding: 2rem;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 767px) {
   .primaryText {
-    font-size: 1.5rem;
+    font-size: 1rem !important;
+  }
+  .primarytext {
+    font-size: 0.9rem !important;
   }
   .orangeText {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
   }
+  .secondaryText{
+    font-size: 0.7rem;
+  }
+  .secondarytext{
+    font-size: 0.6rem;
+  }
+
 }

@@ -29,8 +29,8 @@ const Product = () => {
   };
 
   return (
-    <div>
-      <div className="product-list flexCenter innerWidth paddings">
+    <div className="bg-product">
+      <div className="product-list  innerWidth paddings">
         {products.map((product) => (
           <div
             key={product.id}
@@ -38,12 +38,14 @@ const Product = () => {
             onClick={() => handleCardClick(product)}
           >
             <img src={product.image} alt={product.name} />
+            <div className="info-product flexColStart ">
             <span className='secondaryText r-price flexCenter'>
               <HiLocationMarker style={{color:'var(--text-yellow)'}} />
               <span>{product.add}</span>
             </span>
             <span className='primaryText r-title'>{product.name}</span>
-            <span className='secondaryText'>Diện tích: {product.size}m&#178;</span>
+            <span className='secondaryText r-size'>Diện tích: {product.size}m&#178;</span>
+            </div>
           </div>
         ))}
       </div>

@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { getDatabase, ref, set, get, remove, update } from 'firebase/database';
+import { getDatabase, ref, set, get, remove, update, push } from 'firebase/database';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { Navigate } from 'react-router-dom';
+import { FaEdit } from "react-icons/fa";
+import { RiDeleteBin6Fill } from "react-icons/ri";
+import { FaPlus } from "react-icons/fa";
 import './Admin.css';
+import { FaWindowClose } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi";
 
 const Admin = () => {
   const [form, setForm] = useState({
@@ -16,13 +21,109 @@ const Admin = () => {
     size: '',
     images: ['']
   });
+  const [isFormOpen,setIsFormOpen] = useState(false);
   const [userName, setUserName] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [authChecked, setAuthChecked] = useState(false);
   const [projects, setProjects] = useState([]);
   const [editingProjectId, setEditingProjectId] = useState(null);
+  const [isAdminRightVisible,setIsAdminRightVisible] = useState(false);
+// video tiktok 
+const [tiktokForm, setTiktokForm] = useState({
+  embedCode: ''
+});
+const [tiktokVideos, setTiktokVideos] = useState([]);
+const [isTiktokFormOpen, setIsTiktokFormOpen] = useState(false); // Quản lý trạng thái mở form TikTok
+const [isTiktokTableVisible, setIsTiktokTableVisible] = useState(false); // Quản lý trạng thái hiển thị bảng TikTok
+const toggleTiktokForm = () => {
+  setIsTiktokFormOpen(!isTiktokFormOpen); // Đóng/mở form TikTok
+  if (!isTiktokFormOpen) {
+    setTiktokForm({ embedCode: '' }); // Reset form khi mở
+  }
+};
+useEffect(() => {
+  // Lấy danh sách video TikTok từ Firebase
+  const fetchTiktokVideos = async () => {
+    const db = getDatabase();
+    const tiktokRef = ref(db, 'tiktokVideos');
+    const snapshot = await get(tiktokRef);
 
+    if (snapshot.exists()) {
+      setTiktokVideos(Object.entries(snapshot.val()).map(([id, data]) => ({ id, ...data })));
+    }
+  };
+
+  fetchTiktokVideos();
+}, []);
+const extractCleanTitle = (embedCode) => {
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = embedCode;
+
+  // Tìm thẻ <section> trong blockquote
+  const sectionElement = tempDiv.querySelector('blockquote section');
+  if (sectionElement) {
+    const fullText = sectionElement.textContent;
+
+    // Loại bỏ tên người dùng (@...) và nhạc nền (♬ ...)
+    const cleanedText = fullText
+      .replace(/@\S+/g, "") // Loại bỏ tên người dùng (@boisad1011)
+      .replace(/♬.*/g, "") // Loại bỏ nhạc nền (♬ nhạc nền - Nguyễn Thắng Lợi)
+      .replace(/#\S+/g, "") // Loại bỏ hastag (#...)
+      .trim();
+
+    return cleanedText;
+  }
+  return "Không có tiêu đề";
+};
+const handleTiktokInputChange = (e) => {
+  const { name, value } = e.target;
+  setTiktokForm({ ...tiktokForm, [name]: value });
+};
+
+const handleTiktokSubmit = async (e) => {
+  e.preventDefault();
+
+  if (!tiktokForm.embedCode.trim()) {
+    alert('Vui lòng nhập thẻ blockquote của TikTok.');
+    return;
+  }
+
+  const db = getDatabase();
+  const tiktokRef = ref(db, 'tiktokVideos');
+  const newVideoRef = push(tiktokRef); // Tạo một ID mới trong Firebase
+
+  const videoData = {
+    id: newVideoRef.key, // Lấy ID tự động từ Firebase
+    embedCode: tiktokForm.embedCode // Lưu toàn bộ nội dung thẻ blockquote
+  };
+
+  try {
+    await set(newVideoRef, videoData); // Lưu dữ liệu vào Firebase
+    alert('Video TikTok đã được thêm thành công!');
+    setTiktokVideos([...tiktokVideos, videoData]); // Cập nhật danh sách video
+    setTiktokForm({ embedCode: '' }); // Reset form
+    setIsTiktokFormOpen(false); // Đóng form sau khi thêm video
+  } catch (error) {
+    console.error('Lỗi khi thêm video TikTok:', error);
+    alert('Không thể thêm video TikTok. Vui lòng thử lại.');
+  }
+};
+const handleTiktokDelete = async (id) => {
+  const db = getDatabase();
+  const videoRef = ref(db, `tiktokVideos/${id}`);
+
+  try {
+    await remove(videoRef);
+    alert('Video TikTok đã được xóa thành công!');
+    setTiktokVideos(tiktokVideos.filter((video) => video.id !== id));
+  } catch (error) {
+    console.error('Lỗi khi xóa video TikTok:', error);
+    alert('Không thể xóa video TikTok. Vui lòng thử lại.');
+  }
+};
+
+  // Xác thực người dùng
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -38,7 +139,7 @@ const Admin = () => {
             setIsAdmin(false);
           }
         }).catch((error) => {
-          console.error('Error checking admin status: ', error);
+          console.error('Lỗi admin hoạt động ', error);
           setIsAdmin(false);
         });
       } else {
@@ -47,6 +148,7 @@ const Admin = () => {
       setAuthChecked(true);
     });
 
+    // Lấy danh sách dự án
     const fetchProjects = () => {
       const db = getDatabase();
       const projectsRef = ref(db, 'products');
@@ -64,7 +166,8 @@ const Admin = () => {
 
     return () => unsubscribe();
   }, []);
-
+ 
+  // Cập nhật trường dữ liệu
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
@@ -84,30 +187,57 @@ const Admin = () => {
     const newImages = form.images.filter((_, i) => i !== index);
     setForm({ ...form, images: newImages });
   };
-
+// 
+const toggleForm = () => {
+  if (editingProjectId) return; 
+  setIsFormOpen(!isFormOpen); // Đóng/mở form khi nhấn nút
+  if (!isFormOpen) {
+    // Reset form khi mở
+    setForm({
+      name: '',
+      id: '',
+      year: '',
+      add: '',
+      deps: '',
+      image: '',
+      size: '',
+      images: ['']
+    });
+    setEditingProjectId(null);
+  }
+};
+  // Thêm hoặc cập nhật dự án
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!isAdmin) {
-      alert('You do not have permission to add or modify data.');
+  
+    // Kiểm tra tất cả các trường
+    const { name, id, year, add, deps, image, size, images } = form;
+    if (!name || !id || !year || !add || !deps || !image || !size || images.some(img => img.trim() === '')) {
+      alert('Vui lòng điền đầy đủ thông tin vào tất cả các trường.');
       return;
     }
-
+  
+    if (!isAdmin) {
+      alert('Bạn không có quyền thêm hoặc chỉnh sửa dữ liệu.');
+      return;
+    }
+  
     const db = getDatabase();
     const projectData = {
-      name: form.name,
-      id: form.id,
-      year: form.year,
-      add: form.add,
-      deps: form.deps,
-      image: form.image,
-      size: form.size,
-      images: form.images.filter(image => image)
+      name,
+      id,
+      year,
+      add,
+      deps,
+      image,
+      size,
+      images: images.filter(img => img.trim())
     };
-
+  
     if (editingProjectId) {
       update(ref(db, `products/${editingProjectId}`), projectData)
         .then(() => {
-          alert('Project updated successfully!');
+          alert('Dự án đã được cập nhật thành công!');
           setEditingProjectId(null);
           setForm({
             name: '',
@@ -119,16 +249,17 @@ const Admin = () => {
             size: '',
             images: ['']
           });
-          window.scrollTo(0, 0); // Scroll to top
+          setProjects(projects.map(proj => (proj.id === editingProjectId ? projectData : proj)));
+          window.location.reload();
         })
         .catch((error) => {
-          console.error('Error updating project:', error);
-          alert('Failed to update project. Please try again.');
+          console.error('Lỗi khi cập nhật dự án:', error);
+          alert('Không thể cập nhật dự án. Vui lòng thử lại.');
         });
     } else {
       set(ref(db, `products/${form.id}`), projectData)
         .then(() => {
-          alert('Project added successfully!');
+          alert('Dự án đã được thêm thành công!');
           setForm({
             name: '',
             id: '',
@@ -139,21 +270,26 @@ const Admin = () => {
             size: '',
             images: ['']
           });
-          window.scrollTo(0, 0); // Scroll to top
+          setProjects([...projects, projectData]);
+          window.location.reload();
         })
         .catch((error) => {
-          console.error('Error saving data to database:', error);
-          alert('Failed to add project. Please try again.');
+          console.error('Lỗi khi lưu dữ liệu vào cơ sở dữ liệu:', error);
+          alert('Không thể thêm dự án. Vui lòng thử lại.');
         });
     }
   };
+  
 
+  // Chỉnh sửa dự án
   const handleEdit = (project) => {
     setForm(project);
     setEditingProjectId(project.id);
-    window.scrollTo(0, 0); // Scroll to top
+    setIsFormOpen(true);
+    window.scrollTo(0, document.body.scrollHeight);
   };
 
+  // Xóa dự án
   const handleDelete = (id) => {
     if (!isAdmin) {
       alert('You do not have permission to delete data.');
@@ -165,23 +301,32 @@ const Admin = () => {
     remove(projectRef)
       .then(() => {
         alert('Project deleted successfully!');
-        setProjects(projects.filter(project => project.id !== id)); // Update local state
+        // Cập nhật danh sách dự án sau khi xóa
+        setProjects(projects.filter(project => project.id !== id));
       })
       .catch((error) => {
         console.error('Error deleting project:', error);
         alert('Failed to delete project. Please try again.');
       });
   };
-
+  const toggleAdminRight = () => {
+    setIsAdminRightVisible(!isAdminRightVisible);
+    if (!isAdminRightVisible) {
+      setTimeout(() => {
+        document.getElementById("admin-right").scrollIntoView({ behavior: "smooth" });
+      }, 200); // Delay nhỏ để UI cập nhật trước khi scroll
+    }
+  }
+  // Đăng xuất
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
-        alert('Successfully logged out.');
-        window.location.href = '/login'; // Redirect to login page
+        alert('Thành công.');
+        window.location.href = '/login'; // Chuyển hướng về trang đăng nhập
       })
       .catch((error) => {
-        console.error('Error signing out: ', error);
-        alert('Failed to log out. Please try again.');
+        console.error('Lỗi ', error);
+        alert('Thất bại,vui lòng thử lại.');
       });
   };
 
@@ -196,14 +341,101 @@ const Admin = () => {
   if (!isAdmin) {
     return null;
   }
-
   return (
-    <div className="admin-container">
-      <h1 className='flexCenter' >Quản Trị Viên</h1>
-      {userName && <p className='flexCenter'>Xin Chào, {userName}!</p>}
+    <div className='box-container'>
+      <div className='paddings innerWidth a-container '>
+      <div className="admin-container ">
+      <h1 className='flexCenter '>Venora Admin</h1>
       <div className="btn-logout">
-      <button onClick={handleLogout} className="logout-button">Đăng Xuất</button>
+      {userName && <p className='flexCenter'>Xin Chào, {userName}!</p>}
+        <button onClick={handleLogout} className="logout-button"><FiLogOut /></button>
       </div>
+      <div className="admin-projects">
+        <div className='admin-left'>
+        <span>Tổng dự án<br /><div className='text-small'>Tổng số dự án có trên website</div><div className='text-all-project'>{projects.length}</div><p onClick={toggleAdminRight} id='detail'>{isAdminRightVisible ? "Ẩn chi tiết" : "Xem chi tiết"}</p></span>
+        <span>Tổng dự án tiêu biểu<br /><div className='text-small'>Tổng số dự án tiêu biểu có trên website</div><div className='text-all-project'>{projects.slice(0,5).length}</div> </span>
+        <span>
+  Tổng video
+  <br />
+  <div className='text-small'>Tổng số video có trên website</div>
+  <div className='text-all-project'>{tiktokVideos.length}</div>
+  <p
+  onClick={() => {
+    setIsTiktokTableVisible(!isTiktokTableVisible);
+    if (!isTiktokTableVisible) {
+      setTimeout(() => {
+        document.getElementById("admin-right-tiktok").scrollIntoView({ behavior: "smooth" });
+      }, 200); // Delay nhỏ để đảm bảo UI cập nhật trước khi cuộn
+    }
+  }}
+  id="detail"
+>
+  {isTiktokTableVisible ? "Ẩn chi tiết" : "Xem chi tiết"}
+</p>
+</span>
+        
+        
+        </div>
+        <div className='admin-right-container'>
+            {/* 1 */}
+            <div id='admin-right' className={`admin-rightl ${isAdminRightVisible ? '' : 'hidden'}`}>
+        <div className='admin-right'>
+          <div className='admin-right-title'>
+          <h2>Tất cả các dự án <div className='text-small'>Tổng dự án đang hoạt động</div></h2>
+          <h3 onClick={toggleForm} id="btn-create" className="btn-toggle-form">
+          <div className="icon-plus">
+            {isFormOpen ? <FaWindowClose /> : <FaPlus />}
+          </div>
+            
+        </h3>
+          </div>
+        {projects.map((project) => (
+          <div key={project.id} className="project-item">
+            {/* <img src={project.image} alt={project.name} /> */}
+            <h3>{project.name}</h3>
+            {/* <p>ID: {project.id}</p> */}
+            {/* <p>Năm: {project.year}</p> */}
+            {/* <p>Địa chỉ: {project.add}</p> */}
+            {/* <p>Mô tả: {project.deps}</p> */}
+            {/* <p>Diện tích: {project.size}</p> */}
+            
+            <div className='btn-product'>
+              <button id='edit' onClick={() => handleEdit(project)} className="btn-edit"><FaEdit /></button>
+              <button id='delete' onClick={() => handleDelete(project.id)} className="btn-delete"><RiDeleteBin6Fill /></button>
+            </div>
+          </div>
+        ))}
+        </div>
+        </div>
+        {/* 2 */}
+        <div id='admin-right-tiktok' className={`admin-rightl ${isTiktokTableVisible ? '' : 'hidden'}`}>
+  <div className='admin-right'>
+    <div className='admin-right-title'>
+      <h2>Video TikTok <div className='text-small'>Tổng video đang hoạt động</div></h2>
+      <h3 onClick={() => setIsTiktokFormOpen(!isTiktokFormOpen)} id="btn-create" className="btn-toggle-form">
+        <div className="icon-plus">
+          {isTiktokFormOpen ? <FaWindowClose /> : <FaPlus />}
+        </div>
+      </h3>
+    </div>
+    {tiktokVideos.map((video) => (
+      <div key={video.id} className="project-item">
+        <h3>{extractCleanTitle(video.embedCode)}</h3>
+        <div className="btn-product">
+          <button id="delete" className="btn-delete" onClick={() => handleTiktokDelete(video.id)}>
+            <RiDeleteBin6Fill />
+          </button>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+        </div>       
+      </div>
+      {isFormOpen && (
+  <div className='overlay' onClick={toggleForm}>
+    <div className="admin-form-popup" onClick={(e) => e.stopPropagation()}>
+      <button className="close-btn" onClick={toggleForm}>&times;</button>
       <form onSubmit={handleSubmit} className="admin-form">
         <label>
           Tên dự án:
@@ -222,8 +454,14 @@ const Admin = () => {
           <input type="text" name="add" value={form.add} onChange={handleInputChange} required />
         </label>
         <label>
-        Mô tả:
-          <input type="text" name="deps" value={form.deps} onChange={handleInputChange} required />
+          Mô tả:
+          <textarea 
+            name="deps" 
+            value={form.deps} 
+            onChange={handleInputChange} 
+            required  
+            style={{ height: '150px' }}
+          />
         </label>
         <label>
           Diện tích:
@@ -244,7 +482,6 @@ const Admin = () => {
                 placeholder={`Image URL ${index + 1}`}
                 required
               />
-              
               {index === form.images.length - 1 && (
                 <button type="button" onClick={addImageField} className="add-image-button btnadd">+</button>
               )}
@@ -254,27 +491,13 @@ const Admin = () => {
         </label>
         <button type="submit">{editingProjectId ? 'Cập nhật' : 'Thêm'}</button>
       </form>
-      <div className="admin-projects">
-        <h2>Tất cả dự án (Tổng: {projects.length})</h2> {/* Display total number of projects */}
-        <ul>
-          {projects.map((project) => (
-            <li key={project.id}>
-              <img src={project.image} alt={project.name} />
-              <div>
-                <h3>{project.name}</h3>
-                <p>ID: {project.id}</p>
-                <p>Năm: {project.year}</p>
-                <p>Đại chỉ: {project.add}</p>
-                <p>Mô tả: {project.deps}</p>
-                <p>Kích thước: {project.size}</p>
-                <button id='edit' onClick={() => handleEdit(project)}>Chỉnh sửa</button>
-                <button id='delete' onClick={() => handleDelete(project.id)}>Xóa</button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
     </div>
+  </div>
+)}
+    </div>
+    </div>
+    </div>
+    
   );
 };
 

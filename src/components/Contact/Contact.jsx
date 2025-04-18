@@ -8,7 +8,7 @@ const Contact = () => {
   return (
     <div>
       <section id='contact' className='c-wrapper '>
-        <div className=" innerWidth flexCenter c-container">
+        <div className=" innerWidth flexCenter c-container c-container-s">
           <div className="flexColStart c-left paddings ">
             <span className='orangeText'>Liên Hệ Với Chúng Tôi</span>
             <span className='primaryText'>Liên Hệ Dễ Dàng</span>
@@ -24,7 +24,7 @@ const Contact = () => {
                       <MdCall size={25} />
                     </div>
                     <div className="flexColStart detail">
-                      <span className='primaryText'>Điện Thoại</span>
+                      <span className='primarytext'>Điện Thoại</span>
                       <span className='secondaryText'>070 804 0810</span>
                     </div>
                   </div>
@@ -39,7 +39,7 @@ const Contact = () => {
                       <SiGmail size={25} />
                     </div>
                     <div className="flexColStart detail">
-                      <span className='primaryText'>Gmail</span>
+                      <span className='primarytext'>Gmail</span>
                       <span className='secondaryText'>contact.venoradesign@gmail.com</span>
                     </div>
                   </div>
@@ -58,7 +58,7 @@ const Contact = () => {
                       <FaFacebook size={25} />
                     </div>
                     <div className="flexColStart detail">
-                      <span className='primaryText'>Facebook</span>
+                      <span className='primarytext'>Facebook</span>
                       <span className='secondaryText'>Venora Designer</span>
                     </div>
                   </div>
@@ -73,7 +73,7 @@ const Contact = () => {
                       < FaTiktok size={25} />
                     </div>
                     <div className="flexColStart detail">
-                      <span className='primaryText'>Tiktok</span>
+                      <span className='primarytext'>Tiktok</span>
                       <span className='secondaryText'>@venoradesign</span>
                     </div>
                   </div>

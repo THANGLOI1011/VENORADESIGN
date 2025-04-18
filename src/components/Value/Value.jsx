@@ -12,10 +12,11 @@ const Value = () => {
         
         {/* right- side */}
         <div className=" flexColStart v-right paddings">
-          <span className='orangeText'>Về Chúng Tôi</span>
+          <span className='orangeText'>Về Chúng Tôi</span>  
           <span className='primaryText'>Giá Trị Trao Cho Bạn</span>
           <span className='secondaryText line-height'>Tại Venora, chúng tôi không chỉ thiết kế nhà, mà còn kiến tạo không gian sống đẳng cấp và tinh tế. Với tầm nhìn hướng đến sự hoàn hảo, Venora cam kết mang đến cho bạn những thiết kế sáng tạo, bền vững, và chất lượng vượt trội.Venora hiện thực hóa tầm nhìn của bạn bằng những thiết kế sáng tạo, bền vững. Chúng tôi tạo nên những không gian truyền cảm hứng, vừa vận hành hiệu quả, vừa trường tồn với thời gian, đảm bảo mang đến giá trị vượt trội trong mọi dự án.
           </span>
+          
           <Accordion className='accordion' allowZeroExpanded={false} allowMultipleExpanded={false} preExpanded={[0]}>
             {
               data.map((item,i) => {
@@ -34,7 +35,7 @@ const Value = () => {
                         </AccordionItemState>
 
                         <div className="flexCenter icon">{item.icon}</div>
-                        <span className='primaryText'>
+                        <span className='primarytext'>
                           {item.heading}
                         </span>
                         <div className="flexCenter icon"><MdOutlineArrowDropDown size={20} /></div>
@@ -49,7 +50,7 @@ const Value = () => {
             }
           </Accordion>
         </div>
-        {/* lefft side */}
+         {/* lefft side */}
         <div className="v-left">
           <div className="img-container-value">
             <img src="./value.jpg" alt="" />
@@ -58,7 +59,7 @@ const Value = () => {
               <p>"Kiến tạo không gian sống đẳng cấp với những thiết kế ấn tượng"</p>
             </div>
           </div>
-        </div>  
+        </div> 
       </div>
     </section>
   )

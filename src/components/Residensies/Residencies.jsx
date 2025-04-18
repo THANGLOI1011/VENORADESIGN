@@ -21,8 +21,13 @@ const Residencies = () => {
     });
   }, []);
 
+  const onClick = () => {
+    
+  }
+
   return (
-    <section id='typical' className='r-wrapper'>
+    <section id='typical' className='r-wrapper r-container-s'>
+      
       <div className='paddings innerWidth r-container'>
         <div className="r-head flexColStart">
           <span className='orangeText'>Dự Án Tiêu Biểu</span>
@@ -35,16 +40,18 @@ const Residencies = () => {
               <Link 
                 to={`/product/${project.id}`} 
                 state={{ product: project }} 
-                className='flexColStart r-card'
-                onClick={() => window.scrollTo(0, 0)}  // Cuộn lên đầu trang khi nhấn
+                className='flexColStart r-card r-card-banner'
+                onClick={() => window.scrollTo(0, 0)}  
               >
-                <img src={project.image} alt={project.name} />
+                <img id='img-banner' src={project.image} alt={project.name} />
+                <div className="info-product flexColStart">
                 <span className='secondaryText r-price flexCenter'>
                   <HiLocationMarker style={{color:'var(--text-yellow)'}} />
                   <span>{project.add}</span>
                 </span>
                 <span className='primaryText r-title'>{project.name}</span>
-                <span className='secondaryText'>Diện tích: {project.size}m&#178;</span>
+                <span className='secondaryText r-size'>Diện tích: {project.size}m&#178;</span>
+                </div>
               </Link>
             </SwiperSlide>
           ))}

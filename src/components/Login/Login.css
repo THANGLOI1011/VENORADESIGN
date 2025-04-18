@@ -35,4 +35,50 @@
   .btn-submit:hover {
     background-color: #0056b3;
   }
-  
+  .btnlogin{
+    width: 100%;
+    font-weight: 500;
+    padding: 17px;
+    color: #fff;
+    background-color: var(--green-button);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .unpassword{
+    width: 100%;
+    font-size: 12px;
+    color: #333;
+    display: flex;
+    justify-content: end;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .texterror{
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 6px;
+  }
+  .unpassword:hover{
+    color:blue;
+    text-decoration: underline;
+  }
+  @media(max-width:640px){
+    .btnlogin{
+      font-size: 0.7rem;
+      padding: 10px 15px;
+    }
+    .unpassword{
+      font-size: 0.6rem;
+    }
+    h2{
+      font-size: 1rem;
+    }
+    input{
+      font-size: 0.7rem;
+    }
+    .texterror{
+      font-size: 0.6rem;
+    }
+  }

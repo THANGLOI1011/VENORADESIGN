@@ -21,7 +21,7 @@ const ProtectedRoute = ({ children }) => {
   }, []);
 
   if (!authChecked) {
-    return null; // Có thể thay bằng spinner hoặc loading component
+    return null; 
   }
 
   return isAuthenticated ? children : <Navigate to="/login" />;

@@ -16,59 +16,90 @@ import Admin from './components/Admin/Admin';
 import Login from './components/Login/Login';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import Loading from './components/Loading/Loading';
-
-// Cuộn đến ID khi trang được tải
-function ScrollToHashElement() {
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.hash) {
-      const element = document.getElementById(location.hash.substring(1));
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  }, [location]);
-
-  return null;
-}
+import About from './components/About/About';
+import TikTok from './components/TikTok/TikTok';
+import TikTokDetail from './components/TikTokDetail/TikTokDetail';
+import TikTokProduct from './components/TikTokProduct/TikTokProduct';
 
 function App() {
   const [loading, setLoading] = useState(false);
   const location = useLocation();
 
-  // Hiển thị loading khi điều hướng giữa các trang
   useEffect(() => {
     setLoading(true);
     
     const timeout = setTimeout(() => {
-      setLoading(false); // Giả lập thời gian tải, bạn có thể thay thế bằng logic thực tế
-    }, 1000); // Thời gian loading giả lập là 1 giây
+      setLoading(false);
+    }, 1000);
 
-    return () => clearTimeout(timeout); // Hủy timeout khi component unmount
+    return () => clearTimeout(timeout);
+  }, [location]);
+
+  const isSpecialPage = location.pathname === "/admin" || location.pathname === "/login";
+
+  useEffect(() => {
+    switch (location.pathname) {
+      case "/":
+        document.title = "Venora Design";
+        break;
+      case "/product":
+        document.title = "Product";
+        break;
+      case "/product/:id":
+        document.title = "Product Details";
+        break;
+      case "/video-viral":
+        document.title = "Viral Videos";
+        break;
+      case "/video/:id":
+        document.title = "Video Details";
+        break;
+      case "/login":
+        document.title = "Login";
+        break;
+      case "/admin":
+        document.title = "Admin Dashboard";
+        break;
+      case "/contact":
+        document.title = "Contact";
+        break;
+        case "/value":
+        document.title = "About Us";
+        break;
+        case "/tiktok-products":
+        document.title = "All TikTok Products";
+        break;
+      default:
+        document.title = "";
+    }
   }, [location]);
 
   return (
     <div className="App">
-      <Header />
-      <ScrollToHashElement />
+      {!isSpecialPage && <Header />}
       {loading ? (
-        <Loading /> // Hiển thị loading khi trang đang tải
+        <Loading />
       ) : (
         <Routes>
           <Route path="/" element={
             <>
               <Hero />
               <Companies />
+              <About id='about'/>
               <Residencies id="typical" />
-              <Value id="value" />
-              <Contact id="contact" />
               <Getstarted id="started" />
+              
+              <TikTok/>
+              
             </>
           } />
-          <Route path="/products" element={<Product />} />
+          <Route path="/product" element={<Product />} />
           <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/contact" element={<Contact />} /> 
           <Route path="/login" element={<Login />} />
+          <Route path="/tiktok/:videoId" element={<TikTokDetail />} />
+          <Route path="/tiktok-products" element={<TikTokProduct />} />
+          <Route path="/value" element={<Value />} />
           <Route path="/admin" element={
             <ProtectedRoute>
               <Admin />
@@ -76,7 +107,7 @@ function App() {
           } />
         </Routes>
       )}
-      <Footer />
+      {!isSpecialPage && <Footer />}
       <BackToTop />
     </div>
   );

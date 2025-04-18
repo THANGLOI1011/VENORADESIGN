@@ -1,0 +1,21 @@
+.video-container-product{
+    margin-top:120px;
+}
+
+.video-hashtags {
+    font-size: 12px; /* Chữ nhỏ hơn tiêu đề */
+    color: #888; /* Màu xám */
+    margin-top: 5px;
+    line-height: 1.4;
+  }
+.video-title{
+    font-size: 14px;
+}
+@media (max-width: 767px) {
+    .video-item{
+        padding: 0px;
+    }
+    .video-container{
+        row-gap: 1rem;
+    }
+}

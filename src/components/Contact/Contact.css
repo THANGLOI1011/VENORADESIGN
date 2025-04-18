@@ -1,6 +1,9 @@
 .c-container{
     justify-content: space-between;
 }
+.c-container-s{
+    margin-top: 120px;
+}
 .c-container>div{
     flex: 1;
 }
@@ -43,8 +46,8 @@
     gap: 1.6rem;
 }
 .mode .detail .primaryText{
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 550;
 
 }
 .mode:hover{
@@ -87,8 +90,12 @@
     }
     .mode{
         width: 100%;
+        padding: 18px;
     }
     .c-container{
         padding: 7px 0px 7px 0px;
+    }
+    .inner-container .button{
+        width: 100%;
     }
 }

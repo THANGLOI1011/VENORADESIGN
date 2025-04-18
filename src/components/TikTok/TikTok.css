@@ -1,0 +1,170 @@
+.video-container {
+  display: flex;
+  flex-wrap: wrap; /* Cho phép các item xuống dòng khi không đủ không gian */
+  justify-content: space-between; /* Căn đều các item */
+  row-gap: 1rem;
+}
+  
+.video-item {
+  width: 24%; /* Hiển thị 4 item trên 1 hàng ở màn hình lớn */
+  text-align: center;
+  transition: transform 0.3s ease; /* Hiệu ứng khi hover */
+}
+
+
+  .t-head{
+    margin-bottom: 2rem;
+  }
+  
+  .video-thumbnail-container {
+    position: relative; /* Đặt container làm gốc tham chiếu cho nút Play */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* max-width: 270px; */
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    padding: 16px;
+    padding-bottom: 10px;
+    overflow: hidden; /* Đảm bảo nội dung không tràn ra ngoài */
+    background-color: #fff;
+    transition: transform 0.3s ease; /* Hiệu ứng khi hover */
+  }
+  
+  .video-thumbnail {
+    width: 100%;;
+    height: 250px;
+    display: block;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: cover; 
+
+  }
+
+  .bg-tiktok{
+    background-color: #f5f5f5;
+  }
+  .play-button {
+    position: absolute; /* Đặt nút Play nằm trên ảnh */
+    top: 40%; /* Căn giữa theo chiều dọc */
+    left: 50%; /* Căn giữa theo chiều ngang */
+    transform: translate(-50%, -50%); /* Dịch chuyển để căn giữa chính xác */
+    background: rgba(0, 0, 0, 0.6); /* Nền mờ */
+    color: white;
+    font-size: 40px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .video-thumbnail-container:hover .play-button {
+    background: rgba(0, 0, 0, 0.8); /* Tăng độ mờ khi hover */
+    
+  }
+  
+  .video-thumbnail-container:hover .video-thumbnail {
+    opacity: 0.6;
+  }
+
+  
+  /* ✅ Title nằm trong video-thumbnail-container */
+  .video-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 8px;
+    padding: 5px;
+    text-align: center;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /*  */
+
+
+
+  .load-more-btn {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    background: #ff0050;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-width{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top :20px;
+  }
+  .video-hashtags {
+    font-size: 12px; /* Chữ nhỏ hơn tiêu đề */
+    color: #888; /* Màu xám */
+    margin-top: 5px;
+    text-align: start;
+    line-height: 1.4;
+    display: -webkit-box; /* Sử dụng box layout */
+    -webkit-line-clamp: 2; /* Hiển thị tối đa 2 dòng */
+    -webkit-box-orient: vertical; /* Đặt hướng của box */
+    overflow: hidden; /* Ẩn phần nội dung tràn */
+    text-overflow: ellipsis; /* Thêm dấu "..." nếu nội dung bị cắt */
+    width: 100%; /* Đảm bảo hashtag chiếm toàn bộ chiều rộng */;
+  }
+  @media (max-width: 1024px) {
+    .video-container {
+      grid-template-columns: repeat(2, 1fr); /* Hiển thị 2 item trên 1 hàng */
+    }
+  }
+@media (max-width: 767px) {
+  .video-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .video-thumbnail-container {
+    width: 100%; /* Đảm bảo item chiếm toàn bộ chiều rộng của cột */
+    padding: 0px;
+  }
+
+  .video-thumbnail {
+    width: 100%; /* Đảm bảo thumbnail vừa với container */
+    height: 210px;
+  }
+  .play-button{
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+ 
+  .load-more-btn, .view-all-btn {
+    width: 100%; /* Đảm bảo nút chiếm toàn bộ chiều rộng */
+  }
+  .video-item {
+    width: 48%; /* Đảm bảo item chiếm toàn bộ chiều rộng của cột */
+  }
+  .video-title{
+    padding: 0px;
+  }
+ 
+
+}
+  

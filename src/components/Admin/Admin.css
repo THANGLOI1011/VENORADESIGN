@@ -1,194 +1,686 @@
 /* Admin.css */
 
 .admin-container {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 125px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .admin-container h1 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .admin-container p {
-    font-size: 1rem;
-    color: #666;
-  }
-  
-  .logout-button {
-    background-color: #ff5b5b;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    transition: background-color 0.3s;
-  }
-  
-  .logout-button:hover {
-    background-color: #e74c3c;
-  }
-  
-  .admin-form {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .admin-form label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .admin-form input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .admin-form input:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-  
-  .add-image-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-  }
-  
-  .add-image-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .admin-form button[type="submit"] {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-  }
-  
-  .admin-form button[type="submit"]:hover {
-    background-color: #218838;
-  }
-  
-  .admin-projects {
-    margin-top: 20px;
-  }
-  
-  .admin-projects h2 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 15px;
-  }
-  
-  .admin-projects ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .admin-projects li {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .admin-projects img {
-    max-width: 100px;
-    height: auto;
-    border-radius: 5px;
-    margin-right: 10px;
-  }
-  
-  .admin-projects button {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 10px 30px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: background-color 0.3s;
-  }
-  
-  .admin-projects button:hover {
-    background-color: #c82333;
-  }
-  
-  .image-input-wrapper {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .image-input-wrapper input {
-    flex: 1;
-    margin-right: 10px;
-  }
-  
-  .image-input-wrapper button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-  }
-  
-  .image-input-wrapper button:hover {
-    background-color: #0056b3;
-  }
-  .admin-projects button:hover {
-    background-color: #0056b3;
-  }
-  
-  .admin-projects button.delete {
-    background-color: #dc3545;
-  }
-  
-  .admin-projects button.delete:hover {
-    background-color: #c82333;
-  }
+  font-family: Arial, sans-serif;
+}
+.box-container{
+  background-color: var(--color-bg);
+  height: 100vh;
+}
+.admin-container h1 {
+  font-size: 2rem;
+  color: var(--green-button);
+  margin-bottom: 20px;
+}
+
+.admin-container p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.logout-button {
+  background-color: #fff;
+  color: var(--green-button);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: var(--green-button);
+  color: #fff;
+  transition: 0.5s;
+}
+
+.admin-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.admin-form label {
+  display: grid;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.admin-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.admin-form input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.add-image-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.add-image-button:hover {
+  background-color: #0056b3;
+}
+
+.admin-form button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+  width: 100%;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.admin-form button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+.admin-projects {
+  margin-top: 20px;
+  text-align: start;
+  width: 100%;
+}
+.admin-left{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.admin-right-container{
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.admin-right{
+  width: 100%;
+  height: 500px;
+  overflow-y: scroll; 
+  overflow-x: hidden;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.admin-rightl{
+  width: 55%;
+}
+.admin-rightr{
+  width: 45%;
+}
+.admin-left h2{
+  font-weight: 500;
+  display: grid;
+}
+.text-all-project{
+  font-size: 52px;
+  font-weight: 650;
+  margin-top: 10px;
+}
+.admin-projects h2 {
+  font-size: 1.5rem;
+  color: #333;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+.admin-projects span {
+  font-size: 1.5rem;
+  width: 30%;
+  color: #333;
+  font-weight: 600;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+.admin-projects h3 {
+  color: #333;
+  padding: 20px;
+  font-weight: 550;
+  background-color: #fff;
+  margin-bottom: 12px;
+  white-space: nowrap; /* Không cho phép xuống dòng */
+  overflow: hidden; /* Ẩn phần nội dung tràn */
+  text-overflow: ellipsis; /* Thêm dấu "..." nếu nội dung quá dài */
+}
+.admin-projects ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.project-item  {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  border-bottom: 0.1px solid #f4f4f9;
+  /* box-shadow: 0 0 1px rgba(0, 0, 0, 0.1); */
+}
+
+.admin-projects img {
+  max-width: 100px;
+  height: auto;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+/* .admin-projects button {
+  color: #333;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  background-color: transparent;
+} */
+
+
+
+.image-input-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.image-input-wrapper input {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.image-input-wrapper button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+
 .btn-logout{
-    width: 100%;
-    display: flex;
-    justify-content: end;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 #delete{
-    background-color: rgb(231, 43, 43);
-    margin-top: 20px;
+  margin-top: 10px;
 }
 #edit{
-    background-color: rgb(26, 26, 238);
-    margin-right: 15px;
-    margin-top: 20px;
+  margin-right: 10px;
+  margin-top: 10px;
 }
 .btnadd{
-  margin-right: 10px;
+margin-right: 10px;
+}
+#detail{
+  display: none;
+}
+@media (min-width: 768px) and (max-width: 1024px){
+.project-item  {
+  background-color: #fff;
+  padding: 15px;
+  display: block;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.admin-projects h2{
+  font-size: 1.3rem;
+}
+.text-small{
+  font-size: 0.9rem !important;
+}
+.text-all-project{
+  font-size: 42px;
+}
+#btn-create{
+  font-size: 1.3rem;
+  font-weight: 550;
+}
+.icon-plus{
+  font-size: 18px !important;
+}
+.admin-projects h3{
+  font-size: 1rem;
+}
+.project-item{
+  display: flex;
+  align-items: center;
+}
+#edit{
+  margin-top: 0;
+  margin-right: 3px;
+}
+#delete{
+  margin-top: 0;
+}
+.admin-projects button{
+  padding: 5px 15px;
+}
+
+}
+.btn-toggle-form{
+  cursor: pointer;
+  align-items: center;
+  display: flex;
+}
+.btn-toggle-form h2{
+}
+#text-toggle{
+  font-size: 1rem;
+  font-weight: 700;
+}
+#text-toggle-btn{
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+#btn-create{
+  display: flex;
+}
+.icon-plus{
+  margin-right: 6px;
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+  color: var(--green-button);
+}
+.text-small{
+  font-size: 0.95rem;
+  color: #888888;
+  font-weight: 400;
+}
+.a-container{
+  background-color: var(--color-bg);
+}
+
+
+
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Form hiển thị giữa màn hình */
+.admin-form-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  max-height: 80vh; /* Chiều cao tối đa là 80% màn hình */
+  overflow-y: auto; /* Thêm thanh cuộn dọc */
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Định dạng thanh cuộn cho trình duyệt hỗ trợ */
+.admin-form-popup::-webkit-scrollbar {
+  width: 8px;
+}
+
+.admin-form-popup::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.admin-form-popup::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+/* Nút đóng form */
+.close-btn {
+  position: absolute;
+  top: 1px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: red;
+}
+
+.close-btn:hover {
+  color: rgb(197, 2, 2);
+}
+
+/* Responsive */
+
+@media (max-width: 767px){
+  .admin-container h1{
+    font-size: 1rem;
+  }
+  .admin-container p{
+    font-size: 0.7rem;
+  }
+  .logout-button{
+    font-size: 0.7rem;
+  }
+  .admin-projects{
+    display: grid;
+
+  }
+  .admin-projects h2{
+    font-size: 1rem;
+  }
+  .text-small{
+    font-size: 0.65rem;
+    margin-top: 2px;
+  }
+  .text-all-project{
+    font-size: 20px;
+  }
+  .admin-left{
+    width: 100%;
+    padding: 0;
+  }
+  #btn-create{
+    font-size: 1rem;
+    margin-bottom: 12px;
+    font-weight: 550;
+  }
+  .icon-plus{
+    font-size: 0.7rem;
+  }
+  .admin-rights{
+    width: 100%;
+  }
+  .admin-projects h3{
+    font-size: 0.7rem;
+    padding:10px ;
+    margin-bottom: 0;
+  }
+  .admin-right{
+    padding: 10px;
+  }
+  .hidden{
+    display: none;
+  }
+  .project-item{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+  }
+  #edit{
+    font-size: 0.7rem;
+    padding: 3px 7px;
+    margin-right: 3px;
+    margin-top: 0px;
+
+  }
+  #delete{
+    font-size: 0.7rem;
+    padding: 3px 7px;
+    margin-top: 0px;
+  }
+  .admin-form-popup{
+    width: 80%;
+  }
+  .admin-form label{
+    font-size: 0.7rem;
+  }
+  .admin-form input{
+    font-size: 0.7rem;
+  }
+  .admin-form button[type="submit"]{
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 10px 15px;
+  }
+  #detail{
+    width: 100%;
+    text-align: end;
+    color: #0056b3;
+    cursor: pointer;
+    display: block;
+  }
+}
+
+
+
+
+
+
+
+
+.tiktok-form {
+  margin-bottom: 20px;
+}
+
+.tiktok-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.tiktok-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+}
+
+.tiktok-form button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.tiktok-form button:hover {
+  background-color: #0056b3;
+}
+
+.tiktok-video-list {
+  margin-top: 20px;
+}
+
+.tiktok-video-item {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tiktok-video-item iframe {
+  margin-bottom: 10px;
+}
+
+.delete-btn {
+  padding: 5px 10px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+.btn-toggle-form {
+  cursor: pointer;
+  align-items: center;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.icon-plus {
+  margin-right: 6px;
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+  color: var(--green-button);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.admin-form-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn {
+  position: absolute;
+  top: 1px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: red;
+}
+
+
+
+/* danh sách tiktok  */
+.project-item {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.1px solid #f4f4f9;
+}
+
+.project-item div {
+  flex: 1;
+}
+
+.btn-product {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-edit,
+.btn-delete {
+  margin-left: 10px;
+  background-color: transparent;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn-edit {
+  margin-left: 10px;
+  background-color: transparent;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.admin-right-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 767px) {
+  .admin-container{
+    width: 100%;
+  }
+  .admin-left{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+
+  }
+  .admin-projects span{
+    width: 100%;
+  }
+  .admin-projects{
+    display: block;
+  }
+  .admin-rightr{
+    width: 100%;
+  }
+  #btn-create{
+    display: flex;
+    justify-content: end;
+  }
+  .admin-projects h2{
+    width: 100%;
+  }
+  .admin-right-container{
+    display: flex;
+    flex-direction: column;
+  }
+  .admin-rightl{
+    width: 100%;
+  }
+  .admin-projects span{
+    font-size: 1rem;
+  }
+}
+@media (max-width: 1024px) {
+  .admin-rightl{
+    width: 50%;
+  }
+  .admin-rightl{
+    width: 50%;
+  }
 }

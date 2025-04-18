@@ -21,7 +21,7 @@ const Login = () => {
         navigate('/admin'); // Chuyển hướng đến trang admin
       })
       .catch((error) => {
-        setError('Failed to log in. Please check your credentials.');
+        setError('Đăng nhập thất bại, bạn không phải là admin');
       });
   };
 
@@ -29,7 +29,7 @@ const Login = () => {
     <div className="login-container paddings">
       <form onSubmit={handleLogin}>
         <h2>Đăng nhập</h2>
-        {error && <p>{error}</p>}
+        {error && <p className='texterror'>{error}</p>}
         <input
           type="email"
           placeholder="Email"
@@ -42,7 +42,8 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className='button' type="submit">Đăng nhập</button>
+        <p className='unpassword'>Quên mật khẩu?</p>
+        <button className='btnlogin' type="submit">Đăng nhập</button>
         {userName && <p>Xin chào, {userName}!</p>}
       </form>
     </div>

@@ -1,0 +1,53 @@
+.u-container{
+    background-color:var(--bg-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.text-more{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon-more{
+    font-size: 1.2rem;
+    color: rgb(100, 99, 99);
+    display: inline-flex;
+}
+.text-more:hover a{
+    text-decoration: underline;
+    color: blue;
+}
+.text-about{
+    color: var(--text-yellow) !important;
+    text-align: center;
+}
+.flexcenter{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-wrap: wrap;
+}
+.slogantext{
+    text-align: center;
+}
+.img-value{
+    width: 100vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img-value img{
+    object-fit:cover;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+@media (max-width: 767px) {
+    .img-value img{
+        height: 100%;
+    }
+}
