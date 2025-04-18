@@ -678,9 +678,9 @@ margin-right: 10px;
 }
 @media (max-width: 1024px) {
   .admin-rightl{
-    width: 50%;
+    width: 100%;
   }
   .admin-rightl{
-    width: 50%;
+    width: 100%;
   }
 }
