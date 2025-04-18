@@ -683,4 +683,7 @@ margin-right: 10px;
   .admin-rightl{
     width: 100%;
   }
+  .admin-form-popup{
+    width: 80%;
+  }
 }

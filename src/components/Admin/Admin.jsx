@@ -189,7 +189,6 @@ const handleTiktokDelete = async (id) => {
   };
 // 
 const toggleForm = () => {
-  if (editingProjectId) return; 
   setIsFormOpen(!isFormOpen); // Đóng/mở form khi nhấn nút
   if (!isFormOpen) {
     // Reset form khi mở
@@ -490,6 +489,26 @@ const toggleForm = () => {
           ))}
         </label>
         <button type="submit">{editingProjectId ? 'Cập nhật' : 'Thêm'}</button>
+      </form>
+    </div>
+  </div>
+)}
+{isTiktokFormOpen && (
+  <div className='overlay' onClick={() => setIsTiktokFormOpen(false)}>
+    <div className="admin-form-popup" onClick={(e) => e.stopPropagation()}>
+      <button className="close-btn" onClick={() => setIsTiktokFormOpen(false)}>&times;</button>
+      <form onSubmit={handleTiktokSubmit} className="admin-form">
+        <label>
+          Link TikTok:
+          <textarea
+            name="embedCode"
+            value={tiktokForm.embedCode}
+            onChange={handleTiktokInputChange}
+            required
+            style={{ height: '70px' }}
+          />
+        </label>
+        <button type="submit">Thêm Video</button>
       </form>
     </div>
   </div>
