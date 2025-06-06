@@ -1,7 +1,12 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
-import './App.css';
+import "./App.css";
 import Companies from "./components/Companies/Companies";
 import Residencies from "./components/Residensies/Residencies";
 import Value from "./components/Value/Value";
@@ -9,17 +14,19 @@ import Contact from "./components/Contact/Contact";
 import Getstarted from "./components/Getstarted/Getstarted";
 import Footer from "./components/Footer/Footer";
 import Product from "./components/Product/Product";
-import ProductDetail from './components/ProductDetail/ProductDetail';
-import { useEffect, useState } from 'react';
-import BackToTop from './components/BackToTop/BackToTop';
-import Admin from './components/Admin/Admin';
-import Login from './components/Login/Login';
-import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
-import Loading from './components/Loading/Loading';
-import About from './components/About/About';
-import TikTok from './components/TikTok/TikTok';
-import TikTokDetail from './components/TikTokDetail/TikTokDetail';
-import TikTokProduct from './components/TikTokProduct/TikTokProduct';
+import ProductDetail from "./components/ProductDetail/ProductDetail";
+import { useEffect, useState } from "react";
+import BackToTop from "./components/BackToTop/BackToTop";
+import Admin from "./components/Admin/Admin";
+import Login from "./components/Login/Login";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import Loading from "./components/Loading/Loading";
+import About from "./components/About/About";
+import TikTok from "./components/TikTok/TikTok";
+import TikTokDetail from "./components/TikTokDetail/TikTokDetail";
+import TikTokProduct from "./components/TikTokProduct/TikTokProduct";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -27,7 +34,7 @@ function App() {
 
   useEffect(() => {
     setLoading(true);
-    
+
     const timeout = setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -35,7 +42,8 @@ function App() {
     return () => clearTimeout(timeout);
   }, [location]);
 
-  const isSpecialPage = location.pathname === "/admin" || location.pathname === "/login";
+  const isSpecialPage =
+    location.pathname === "/admin" || location.pathname === "/login";
 
   useEffect(() => {
     switch (location.pathname) {
@@ -63,15 +71,22 @@ function App() {
       case "/contact":
         document.title = "Contact";
         break;
-        case "/value":
+      case "/value":
         document.title = "About Us";
         break;
-        case "/tiktok-products":
+      case "/tiktok-products":
         document.title = "All TikTok Products";
         break;
       default:
         document.title = "";
     }
+  }, [location]);
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+    });
+    AOS.refresh();
   }, [location]);
 
   return (
@@ -81,30 +96,46 @@ function App() {
         <Loading />
       ) : (
         <Routes>
-          <Route path="/" element={
-            <>
-              <Hero />
-              <Companies />
-              <About id='about'/>
-              <Residencies id="typical" />
-              <Getstarted id="started" />
-              
-              <TikTok/>
-              
-            </>
-          } />
+          <Route
+            path="/"
+            element={
+              <>
+                <div data-aos="fade-up">
+                  <Hero />
+                </div>
+                <div data-aos="fade-right">
+                  <Companies />
+                </div>
+                <div data-aos="fade-up">
+                  <About id="about" />
+                </div>
+                <div data-aos="fade-left">
+                  <Residencies id="typical" />
+                </div>
+                <div data-aos="fade-right">
+                  <Getstarted id="started" />
+                </div>
+                <div data-aos="fade-up">
+                  <TikTok />
+                </div>
+              </>
+            }
+          />
           <Route path="/product" element={<Product />} />
           <Route path="/product/:id" element={<ProductDetail />} />
-          <Route path="/contact" element={<Contact />} /> 
+          <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/tiktok/:videoId" element={<TikTokDetail />} />
           <Route path="/tiktok-products" element={<TikTokProduct />} />
           <Route path="/value" element={<Value />} />
-          <Route path="/admin" element={
-            <ProtectedRoute>
-              <Admin />
-            </ProtectedRoute>
-          } />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <Admin />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       )}
       {!isSpecialPage && <Footer />}

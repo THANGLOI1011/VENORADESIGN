@@ -6,7 +6,7 @@ import { FaFacebook, FaTiktok } from 'react-icons/fa'
 
 const Contact = () => {
   return (
-    <div>
+    <div data-aos="fade-up">
       <section id='contact' className='c-wrapper '>
         <div className=" innerWidth flexCenter c-container c-container-s">
           <div className="flexColStart c-left paddings ">

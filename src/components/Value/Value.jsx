@@ -8,7 +8,7 @@ import data from '../../utils/accordion'
 const Value = () => {
   return (
     <section id='value' className='v-wrapper'>
-      <div className=" innerWidth flexCenter v-container">
+      <div data-aos="fade-up" className=" innerWidth flexCenter v-container">
         
         {/* right- side */}
         <div className=" flexColStart v-right paddings">

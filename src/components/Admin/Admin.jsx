@@ -91,17 +91,17 @@ const handleTiktokSubmit = async (e) => {
 
   const db = getDatabase();
   const tiktokRef = ref(db, 'tiktokVideos');
-  const newVideoRef = push(tiktokRef); // Tạo một ID mới trong Firebase
+  const newVideoRef = push(tiktokRef); 
 
   const videoData = {
-    id: newVideoRef.key, // Lấy ID tự động từ Firebase
-    embedCode: tiktokForm.embedCode // Lưu toàn bộ nội dung thẻ blockquote
+    id: newVideoRef.key, 
+    embedCode: tiktokForm.embedCode 
   };
 
   try {
     await set(newVideoRef, videoData); // Lưu dữ liệu vào Firebase
     alert('Video TikTok đã được thêm thành công!');
-    setTiktokVideos([...tiktokVideos, videoData]); // Cập nhật danh sách video
+    setTiktokVideos([...tiktokVideos, videoData]); 
     setTiktokForm({ embedCode: '' }); // Reset form
     setIsTiktokFormOpen(false); // Đóng form sau khi thêm video
   } catch (error) {
@@ -234,6 +234,7 @@ const toggleForm = () => {
     };
   
     if (editingProjectId) {
+      // Cập nhật dự án
       update(ref(db, `products/${editingProjectId}`), projectData)
         .then(() => {
           alert('Dự án đã được cập nhật thành công!');
@@ -256,6 +257,7 @@ const toggleForm = () => {
           alert('Không thể cập nhật dự án. Vui lòng thử lại.');
         });
     } else {
+      // Thêm mới dự án
       set(ref(db, `products/${form.id}`), projectData)
         .then(() => {
           alert('Dự án đã được thêm thành công!');

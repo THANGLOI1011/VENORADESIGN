@@ -53,7 +53,7 @@ const TikTokProduct = () => {
   }, []);
 
   return (
-    <div className="bg-product">
+    <div data-aos="fade-up" className="bg-product">
       <div className="tiktok innerWidth paddings">
       <div className="tiktok-items">
         <h2>Tất cả Video TikTok</h2>

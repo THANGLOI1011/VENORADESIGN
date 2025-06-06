@@ -3,7 +3,7 @@ import './Footer.css';
 
 const Footer = () => {
   return (
-    <div>
+    <div data-aos="fade-up">
       <section className="f-wrapper innerWidth">
         <div className=" footer innerWidth">
           <div className="footer-container">

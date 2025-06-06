@@ -26,7 +26,7 @@ const ProductDetail = () => {
   }, []);
 
   return (
-    <div className="product-detail-container innerWidth">
+    <div data-aos="fade-up" className="product-detail-container innerWidth">
       <div className="product-detail-name">
         <h1 className='primaryText flexCenter'>{product.name}</h1>
         <div className="product-detail-name-deps">

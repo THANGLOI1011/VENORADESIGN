@@ -10,19 +10,19 @@ const Getstarted = () => {
             </div>
             <div className='icon-product'>
               <div className='icon-product-item'>
-                <img src="/lightbulb-on.svg" alt="icon-creative" />
+                <img src="/idea.png" alt="icon-creative" />
                 <span className='secondarytext'>Thiết kế sáng tạo</span>
               </div>
               <div className='icon-product-item'>
-                <img src="/quality.svg" alt="icon-quality" />
+                <img src="/quality.png" alt="icon-quality" />
                 <span  className='secondarytext'>Chất lượng vượt trội</span>
               </div>
               <div className='icon-product-item'>
-                <img src="/practice.svg" alt="icon-practice" />
+                <img src="/practice.png" alt="icon-practice" />
                 <span  className='secondarytext'>Sự đổi mới sáng tạo</span>
               </div>
               <div className='icon-product-item'>
-                <img src="/suggestion.svg" alt="icon-suggestion" />
+                <img src="/suggestion.png" alt="icon-suggestion" />
                 <span  className='secondarytext'>Hỗ trợ khách hàng</span>
               </div>
             </div>

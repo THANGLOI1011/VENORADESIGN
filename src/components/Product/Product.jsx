@@ -29,7 +29,7 @@ const Product = () => {
   };
 
   return (
-    <div className="bg-product">
+    <div data-aos="fade-up" className="bg-product">
       <div className="product-list  innerWidth paddings">
         {products.map((product) => (
           <div
