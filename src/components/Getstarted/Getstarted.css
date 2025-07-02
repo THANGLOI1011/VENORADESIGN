@@ -1,5 +1,5 @@
 .icon-product-item img{
-    width: 100px;
+    width: 120px;
     
 }
 .icon-product-item{
@@ -12,7 +12,7 @@
     display: flex;
     justify-content: space-between;
     padding:2rem 0 2rem 0;
-    
+    flex-wrap: wrap;
 }
 .icon-product-item span{
     margin-top: 20px;
@@ -28,7 +28,7 @@
 }
 @media(max-width:767px) {
     .icon-product-item img{
-        width: 40px;
+        width: 50%;
         
     }
     .icon-product-item span{
@@ -37,4 +37,15 @@
     .g-container{
         padding: 1rem;
     }
+    .icon-product {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding-top: 1rem !important;
+  }
+  .icon-product-item {
+    justify-self: center;
+    width: 100%;
+    text-align: center;
+  }
 }

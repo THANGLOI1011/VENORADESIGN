@@ -9,18 +9,33 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: transparent;
+    border: 1px solid var(--green-button);
+    border-radius: 18px;
+    padding:8px 24px;
+    cursor: pointer;
+    transition: all 200ms ease-in;
+}
+.text-more:hover {
+    background-color: var(--green-button);
+}
+
+.text-more:hover .view-more {
+    color: #fff;
+    background-color: transparent; 
+}
+
+.text-more:hover .icon-more {
+    color: #fff;
 }
 .icon-more{
     font-size: 1.2rem;
-    color: rgb(100, 99, 99);
+    color: var(--green-button);
     display: inline-flex;
 }
-.text-more:hover a{
-    text-decoration: underline;
-    color: blue;
-}
+
 .text-about{
-    color: var(--text-yellow) !important;
+    color: var(--green-button) !important;
     text-align: center;
 }
 .flexcenter{
@@ -45,6 +60,11 @@
     height: 100vh;
     background-size: cover;
     background-position: center;
+}
+.view-more{
+    color: var(--green-button);
+    font-size: 0.9rem;
+
 }
 @media (max-width: 767px) {
     .img-value img{

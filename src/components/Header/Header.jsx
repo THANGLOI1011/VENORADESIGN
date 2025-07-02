@@ -97,7 +97,7 @@ const Header = () => {
               <Link
               to='/contact'
                 id="button"
-                className="button textWhite"
+                className=" textWhite"
                 onClick={() => setmenuOpened(false)}
                 
 

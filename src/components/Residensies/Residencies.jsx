@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import 'Swiper/css';
 import './Residencies.css';
 import { HiLocationMarker } from 'react-icons/hi';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getDatabase, ref, onValue } from "firebase/database"; 
 import { SliderSettings } from '../../utils/common';
 
@@ -20,10 +20,6 @@ const Residencies = () => {
       setProjects(projectsArray.slice(0, 5)); 
     });
   }, []);
-
-  const onClick = () => {
-    
-  }
 
   return (
     <section id='typical' className='r-wrapper r-container-s'>
@@ -57,7 +53,7 @@ const Residencies = () => {
           ))}
           <SwiperSlide>
             <div className='r-card-view-more'>
-              <Link to="/products" className="button">View More</Link>
+              <Link to="/products" className="button">Xem thêm</Link>
             </div>
           </SwiperSlide>
         </Swiper>

@@ -59,7 +59,7 @@ const Contact = () => {
                     </div>
                     <div className="flexColStart detail">
                       <span className='primarytext'>Facebook</span>
-                      <span className='secondaryText'>Venora Designer</span>
+                      <span className='secondaryText'>Venora Design</span>
                     </div>
                   </div>
                   <div className="flexCenter button">
