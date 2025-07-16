@@ -58,7 +58,7 @@ const TikTokProduct = () => {
       <div className="tiktok-items">
         <h2>Tất cả Video TikTok</h2>
         <div className="video-container video-container-product">
-          {videos.map((video, index) => (
+          {[...videos].reverse().map((video, index) => (
             <Link to={`/tiktok/${video.videoId}`} key={index} className="video-item">
               <div className="video-thumbnail-container">
                 <img

@@ -58,7 +58,7 @@ const TikTok = () => {
           });
         }
       } catch (error) {
-        console.error("🔥 Lỗi khi lấy dữ liệu:", error);
+        console.error("Lỗi khi lấy dữ liệu:", error);
       }
     };
 
@@ -76,7 +76,7 @@ const TikTok = () => {
           <span className="primaryText">Video viral TikTok</span>
         </div>
         <div className="video-container">
-          {videos.slice(0, visibleCount).map((video, index) => (
+            {[...videos].reverse().slice(0, visibleCount).map((video, index) => (
             <Link
               to={`/tiktok/${video.videoId}`}
               key={index}
@@ -102,7 +102,7 @@ const TikTok = () => {
         <div className="btn-width">
           {visibleCount < videos.length && (
             <button className="button" onClick={loadMoreVideos}>
-              Tải thêm video
+              Xem thêm
             </button>
           )}
         </div>

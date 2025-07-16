@@ -35,7 +35,7 @@ const Value = () => {
                         </AccordionItemState>
 
                         <div className="flexCenter icon">{item.icon}</div>
-                        <span className='primarytext'>
+                        <span className='primaryText'>
                           {item.heading}
                         </span>
                         <div className="flexCenter icon"><MdOutlineArrowDropDown size={20} /></div>

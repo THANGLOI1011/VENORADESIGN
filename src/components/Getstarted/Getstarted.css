@@ -26,6 +26,10 @@
 .g-container{
     padding: 1.5rem;
 }
+.icon-product span{
+    color: #000000;
+    font-weight: 450;
+}
 @media(max-width:767px) {
     .icon-product-item img{
         width: 50%;

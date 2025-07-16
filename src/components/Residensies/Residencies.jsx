@@ -52,8 +52,10 @@ const Residencies = () => {
             </SwiperSlide>
           ))}
           <SwiperSlide>
-            <div className='r-card-view-more'>
+            <div className='more'>
+              <div className='r-card-view-more'>
               <Link to="/products" className="button">Xem thêm</Link>
+            </div>
             </div>
           </SwiperSlide>
         </Swiper>

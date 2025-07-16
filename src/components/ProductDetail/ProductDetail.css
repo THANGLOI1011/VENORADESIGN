@@ -53,7 +53,6 @@
   font-size: 1rem;
   font-weight: 600;
   color: var(--green-button);
-  padding: 10px 0;
 }
 @media (max-width: 640px){
   .product-detail-container h1{
