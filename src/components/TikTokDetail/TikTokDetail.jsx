@@ -60,8 +60,8 @@ const TikTokDetail = () => {
   return (
     <div data-aos="fade-up" className="bg-tiktok-detail">
       <div className="tiktok-detail-bg">
-        <div className="tiktok-detail-center">
-          <div className="tiktok-detail-layout">
+        <div className="tiktok-detail-center paddings ">
+          <div className="tiktok-detail-layout ">
             {/* Video chi tiết */}
             <div className="tiktok-detail">
               <iframe
@@ -75,7 +75,7 @@ const TikTokDetail = () => {
             </div>
 
             {/* Video liên quan */}
-            <div className="related-videos paddings">
+            <div className="related-videos ">
               <h1 className="related-videos-title">VIDEO KHÁC</h1>
               <div className="related-video-list">
                 {relatedVideos.map((video, index) => (

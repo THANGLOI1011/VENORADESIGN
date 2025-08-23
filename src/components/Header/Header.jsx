@@ -41,9 +41,9 @@ const Header = () => {
               <Link className="textWhite" to="/tiktok-products" onClick={() => setmenuOpened(false)}>
                 VIDEO CÔNG TRÌNH
               </Link>
-              <Link className="textWhite" to="/" onClick={() => setmenuOpened(false)}>
+              {/* <Link className="textWhite" to="/" onClick={() => setmenuOpened(false)}>
                 TIN TỨC
-              </Link>
+              </Link> */}
               <Link
                 to='/contact'
                 id="button"

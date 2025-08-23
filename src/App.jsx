@@ -48,34 +48,34 @@ function App() {
   useEffect(() => {
     switch (location.pathname) {
       case "/":
-        document.title = "Venora Design";
+        document.title = "VENORA DESIGN";
         break;
       case "/product":
-        document.title = "Dự Án";
+        document.title = "DỰ ÁN";
         break;
       case "/product/:id":
-        document.title = "Chi Tiết Dự Án";
+        document.title = "CHI TIẾT DỰ ÁN";
         break;
       case "/video-viral":
-        document.title = "Video Viral";
+        document.title = "VIDEO CÔNG TRÌNH";
         break;
       case "/video/:id":
-        document.title = "Chi Tiết Video";
+        document.title = "CHI TIẾT VIDEO";
         break;
       case "/login":
-        document.title = "Login";
+        document.title = "LOGIN";
         break;
       case "/admin":
-        document.title = "Admin Dashboard";
+        document.title = "ADMIN PAGE";
         break;
       case "/contact":
-        document.title = "Liên Hệ";
+        document.title = "LIÊN HỆ";
         break;
       case "/about":
-        document.title = "Về Chúng Tôi";
+        document.title = "VỀ CHÚNG TÔI";
         break;
       case "/tiktok-products":
-        document.title = "Tất Cả Video";
+        document.title = "VIDEO CÔNG TRÌNH";
         break;
       default:
         document.title = "";

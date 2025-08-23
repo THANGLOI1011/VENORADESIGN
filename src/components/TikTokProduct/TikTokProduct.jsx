@@ -55,7 +55,7 @@ const TikTokProduct = () => {
   return (
     <div data-aos="fade-up" className="bg-product">
         <div className="img-tiktok">
-          <img src="/image-tiktok2.jpg" alt="" />
+          <img src="/image-tiktok3.jpg" alt="" />
         </div>
       <div className="tiktok tiktok-product  innerWidth paddings">
       <div className="tiktok-items">

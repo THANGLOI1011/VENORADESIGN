@@ -52,7 +52,6 @@
 /* Video liên quan */
 .related-videos {
   flex: 1;
-  padding: 0;
   border-radius: 16px;
   width: 40%;
   background: transparent;
@@ -67,13 +66,15 @@
 /* Danh sách video liên quan */
 .related-video-list {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: hidden;
   gap: 15px;
 }
 
 .related-video-item {
   display: flex;
   gap: 10px;
+  
   text-decoration: none;
   color: inherit;
   margin-bottom: 10px;
@@ -109,7 +110,7 @@
 /* Hashtags */
 .related-video-hashtags {
   font-size: 12px; /* Chữ nhỏ hơn tiêu đề */
-  color: #888; /* Màu xám */
+  color: #666; /* Màu xám */
   margin-top: 6px;
   line-height: 1.4;
   display: -webkit-box; /* Sử dụng box layout */
@@ -119,19 +120,26 @@
   text-overflow: ellipsis; /* Thêm dấu "..." nếu nội dung bị cắt */
   width: 100%; /* Đảm bảo hashtag chiếm toàn bộ chiều rộng */;
 }
-@media (max-width: 900px) {
+@media ( min-width: 768px) and (max-width: 1024px) {
   .tiktok-detail-layout {
-    padding: 40px 12px;
+    padding: 40px 0px;
     border-radius: 16px;
     gap: 32px;
-    max-width: 98vw;
   }
   .related-videos-title {
     font-size: 1.5rem;
   }
+  .related-video-thumbnail{
+    width: 100%;
+    height: 80px;
+  }
+  .related-video-list{
+    width: 300px;
+  }
+  
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   .tiktok-detail-layout {
     flex-direction: column;
     padding: 16px 2px;
@@ -145,7 +153,6 @@
   }
   .related-videos {
     width: 100%;
-    padding: 0;
   }
 }
 
