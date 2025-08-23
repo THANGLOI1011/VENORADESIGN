@@ -64,12 +64,6 @@
 }
 
 /* Danh sách video liên quan */
-.related-video-list {
-  display: flex;
-  flex-wrap: wrap;
-  overflow: hidden;
-  gap: 15px;
-}
 
 .related-video-item {
   display: flex;

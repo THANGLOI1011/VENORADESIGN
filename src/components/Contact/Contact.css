@@ -140,8 +140,13 @@
     grid-template-columns: 1fr;
     gap: 16px;
   }
-  .contact-team-img img {
-    width: 98vw;
+  .contact-bottom-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .contact-map iframe {
+    height: 220px;
   }
   .contact-form {
     padding: 40px 24px;
