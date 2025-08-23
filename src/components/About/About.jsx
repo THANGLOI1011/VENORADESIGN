@@ -1,29 +1,46 @@
-import React from 'react'
-import './About.css'
-import { GrFormNextLink } from "react-icons/gr";
+import React from "react";
+import "./About.css";
 const About = () => {
   return (
-    <div>
-      <div className=' innerWidth flexcenter'>
-        <div className='paddings flexColStart u-container'>
-          <span className='primaryText text-about'>Về Chúng Tôi</span>
-          <span className='secondaryText line-height slogantext'>Tại Venora, chúng tôi không chỉ thiết kế nhà, mà còn kiến tạo không gian sống đẳng cấp và tinh tế. Với tầm nhìn hướng đến sự hoàn hảo, Venora cam kết mang đến cho bạn những thiết kế sáng tạo, bền vững, và chất lượng vượt trội.
-            Venora hiện thực hóa tầm nhìn của bạn bằng những thiết kế sáng tạo, bền vững.
+    <div className="about-container">
+      <div className="innerWidth paddings about-wrapper">
+        <div className=" flexColStart u-container">
+          <span className="secondaryText">Về Chúng Tôi</span>
+          <span className="primaryText text-about">VENORA DESIGN</span>
+          <span className="secondaryText">
+            Venora Design được hình thành từ năm 2022 dưới dạng một đội ngũ
+            thiết kế trẻ đầy nhiệt huyết. <br />
+            Đến năm 2024, chúng tôi chính thức hoạt động dưới danh nghĩa Venora
+            Design, với mục tiêu mang tới những công trình kiến trúc hiện đại,
+            đẹp mắt và phù hợp với nhu cầu sống đương đại.
           </span>
-          <a href="/Value">
-          <div className='text-more'>
-          <a className='secondaryText view-more'>Xem thêm </a>
-          <div className='icon-more'><GrFormNextLink /></div>
-          </div>
-          </a>
         </div>
-        
+        <div className="left-container ">
+          <span className="secondaryText">
+            Tiên phong trong việc đưa mini villa trở thành xu hướng tại Việt
+            Nam, Venora Design mang đến trải nghiệm sống như resort ngay trong
+            chính ngôi nhà của bạn – nơi hội tụ vẻ đẹp tinh tế, công năng tiện
+            nghi và chi phí tối ưu.
+          </span>
+          <span className="secondaryText">
+            Venora hướng tới việc kiến tạo những không gian sống vừa thẩm mỹ,
+            vừa bền vững, đặt con người làm trung tâm trong mọi thiết kế.
+          </span>
+          <span className="secondaryText">
+            Chúng tôi tin rằng một ngôi nhà không chỉ là nơi trú ngụ, mà còn là
+            nền tảng nuôi dưỡng cảm xúc, kết nối gia đình và nâng tầm chất lượng
+            sống mỗi ngày.
+          </span>
+        </div>
       </div>
-      <div className="img-value  ">
-            <img className='img-value' src="https://res.cloudinary.com/dxo8lnvlm/image/upload/v1741175463/476631203_122208792596211603_3200218464541819110_n.jpg_bptkld.jpg" alt="" />
-          </div>
+      <div className="about-image innerWidth">
+        <img src="/about.jpg" alt="about" />
+      </div>
+      <div className="btn-text-more">
+        <a href="/about">Xem thêm</a>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default About
+export default About;

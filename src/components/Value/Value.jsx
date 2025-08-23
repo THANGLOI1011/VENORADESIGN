@@ -1,68 +1,104 @@
-import React, { useState } from 'react'
-import { Accordion, AccordionItem,AccordionItemHeading,AccordionItemButton,AccordionItemPanel,AccordionItemState
-} from 'react-accessible-accordion'
-import 'react-accessible-accordion/dist/fancy-example.css'
-import { MdOutlineArrowDropDown } from 'react-icons/md'
-import './Value.css'
-import data from '../../utils/accordion'
+import React from "react";
+import "./Value.css";
+
+const TEAM_LIST = [
+  {
+    name: "NGUYỄN QUỐC THÔNG",
+    position: "FOUNDER & CEO",
+    image: "https://res.cloudinary.com/dxo8lnvlm/image/upload/v1755592640/1G2A9730_pszuwg.jpg",
+  },
+  {
+    name: "NGUYỄN CHIẾN THẮNG",
+    position: "CO-FOUNDER & 3D VISUAL",
+    image: "https://res.cloudinary.com/dxo8lnvlm/image/upload/v1755592637/1G2A9779_iwjztu.jpg",
+  },
+  {
+    name: "VÕ QUỐC VIỆT",
+    position: "CO-FOUNDER & SALE",
+    image: "/viet.jpg",
+  },
+  {
+    name: "HUỲNH TRUNG TRUNG",
+    position: "TRIỂN KHAI KIẾN TRÚC",
+    image: "/trung.jpg",
+  },
+  {
+    name: "NGUYỄN VĂN HUY",
+    position: "MARKETING",
+    image: "/huy.jpg",
+  },
+  {
+    name: "PHAN TIẾN CÔNG",
+    position: "CONCEPT & TRIỂN KHAI KIẾN TRÚC",
+    image: "https://res.cloudinary.com/dxo8lnvlm/image/upload/v1755592631/1G2A9579_fqbnez.jpg",
+  },
+  {
+    name: "PHÙNG TIẾN TỈNH",
+    position: "CONCEPT & 3D VISUAL",
+    image: "https://res.cloudinary.com/dxo8lnvlm/image/upload/v1755592599/TINH_2_bypfbe.jpg",
+  },
+  {
+    name: "HOÀNG KIM TRIỀU",
+    position: "KIẾN TRÚC SƯ",
+    image: "https://res.cloudinary.com/dxo8lnvlm/image/upload/v1755592623/TRI%E1%BB%80U_tcbott.jpg",
+  },
+  {
+    name: "ĐỖ MINH THẠCH",
+    position: "MARKETING",
+    image: "/thach.jpg",
+  },
+];
+
 const Value = () => {
+  // 3 người quan trọng đầu tiên
+  const mainMembers = TEAM_LIST.slice(0, 3);
+  // Các thành viên còn lại
+  const otherMembers = TEAM_LIST.slice(3);
+
   return (
-    <section id='value' className='v-wrapper'>
-      <div data-aos="fade-up" className=" innerWidth flexCenter v-container">
-        
-        {/* right- side */}
-        <div className=" flexColStart v-right paddings">
-          <span className='orangeText'>Về Chúng Tôi</span>  
-          <span className='primaryText'>Giá Trị Trao Cho Bạn</span>
-          <span className='secondaryText line-height'>Tại Venora, chúng tôi không chỉ thiết kế nhà, mà còn kiến tạo không gian sống đẳng cấp và tinh tế. Với tầm nhìn hướng đến sự hoàn hảo, Venora cam kết mang đến cho bạn những thiết kế sáng tạo, bền vững, và chất lượng vượt trội.Venora hiện thực hóa tầm nhìn của bạn bằng những thiết kế sáng tạo, bền vững. Chúng tôi tạo nên những không gian truyền cảm hứng, vừa vận hành hiệu quả, vừa trường tồn với thời gian, đảm bảo mang đến giá trị vượt trội trong mọi dự án.
-          </span>
-          
-          <Accordion className='accordion' allowZeroExpanded={false} allowMultipleExpanded={false} preExpanded={[0]}>
-            {
-              data.map((item,i) => {
-                const [className,setClassName] =useState(null)
-                return(
-                  <AccordionItem className={'accordionItem ${className}'} key={i} uuid={i}>
-                    <AccordionItemHeading>
-                      <AccordionItemButton className=' flexCenter accordionButton'>
-
-                        <AccordionItemState>
-                          {({expanded}) => 
-                            expanded 
-                            ? setClassName('expanded') 
-                            : setClassName('colapsed')
-                            }
-                        </AccordionItemState>
-
-                        <div className="flexCenter icon">{item.icon}</div>
-                        <span className='primaryText'>
-                          {item.heading}
-                        </span>
-                        <div className="flexCenter icon"><MdOutlineArrowDropDown size={20} /></div>
-                      </AccordionItemButton>
-                    </AccordionItemHeading>
-                    <AccordionItemPanel>
-                      <p className="secondaryText line-height">{item.detail}</p>
-                    </AccordionItemPanel>
-                  </AccordionItem>
-                )
-              })
-            }
-          </Accordion>
-        </div>
-         {/* lefft side */}
-        <div className="v-left">
-          <div className="img-container-value">
-            <img src="./value.jpg" alt="" />
-            <div className='textslogan paddings'>
-              <h1>Đến với Venora</h1>
-              <p>"Kiến tạo không gian sống đẳng cấp với những thiết kế ấn tượng"</p>
-            </div>
-          </div>
-        </div> 
+    <div className="about-team-wrapper">
+      <div className="about-team-img">
+        <img src="/about1.jpg" alt="Venora Team" />
       </div>
-    </section>
-  )
-}
+      <div className="about-team-section paddings">
+        <div className="about-team-title">VỀ CHÚNG TÔI</div>
+        <div className="about-team-desc">
+          VENORA DESIGN bắt đầu hoạt động từ năm 2020 dưới hình thức một team thiết kế nhỏ, khởi đầu bằng tình yêu nghề cũng như trách nhiệm đối với người thân và gia đình của <br />đội ngũ Founders.
+        </div>
+      </div>
+      <hr className="about-team-divider" />
+      <div className="about-team-section paddings">
+        <div className="about-team-title">ĐỘI NGŨ NHÂN SỰ</div>
+        <div className="about-team-desc">
+          Chúng tôi là tập thể những con người chung niềm đam mê sáng tạo, đồng hành trong mọi dự án để mang đến giá trị bền vững và khác biệt.
+        </div>
+        {/* Hàng đầu: 3 người */}
+        <div className="about-team-row-main">
+          {mainMembers.map((member, idx) => (
+            <div className="about-team-card" key={idx}>
+              <div className="about-team-card-img">
+                <img src={member.image} alt={member.name} />
+              </div>
+              <div className="about-team-card-name">{member.name}</div>
+              <div className="about-team-card-pos">{member.position}</div>
+            </div>
+          ))}
+        </div>
+        {/* Các hàng sau: 4 item trên 1 hàng */}
+        <div className="about-team-grid">
+          {otherMembers.map((member, idx) => (
+            <div className="about-team-card" key={idx}>
+              <div className="about-team-card-img">
+                <img src={member.image} alt={member.name} />
+              </div>
+              <div className="about-team-card-name">{member.name}</div>
+              <div className="about-team-card-pos">{member.position}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default Value
+export default Value;

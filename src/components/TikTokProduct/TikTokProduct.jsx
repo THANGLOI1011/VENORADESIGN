@@ -54,10 +54,14 @@ const TikTokProduct = () => {
 
   return (
     <div data-aos="fade-up" className="bg-product">
-      <div className="tiktok innerWidth paddings">
+        <div className="img-tiktok">
+          <img src="/image-tiktok2.jpg" alt="" />
+        </div>
+      <div className="tiktok tiktok-product  innerWidth paddings">
       <div className="tiktok-items">
-        <h2>Tất cả Video TikTok</h2>
-        <div className="video-container video-container-product">
+        <h2>TẤT CẢ VIDEO</h2>
+        <span>Bộ sưu tập mọi video viral, ghi lại những khoảnh khắc, câu chuyện và cảm xúc lan <br />tỏa mạnh mẽ</span>
+        <div className="video-container video-container-product video-container-tiktok">
           {[...videos].reverse().map((video, index) => (
             <Link to={`/tiktok/${video.videoId}`} key={index} className="video-item">
               <div className="video-thumbnail-container">

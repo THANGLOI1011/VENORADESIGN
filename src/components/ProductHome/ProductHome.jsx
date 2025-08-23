@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { db } from "../../firebase";
-import "./Product.css";
 import { ref, onValue } from "firebase/database";
+import "./ProductHome.css";
+import { db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 
 const CATEGORY_LIST = [
@@ -18,7 +18,7 @@ const getCategoryKey = (category) => {
   return "other";
 };
 
-const Product = () => {
+const ProductHome = () => {
   const [products, setProducts] = useState([]);
   const [activeCategory, setActiveCategory] = useState("congtrinhthucte");
   const navigate = useNavigate();
@@ -38,17 +38,14 @@ const Product = () => {
 
   const filteredProducts =
     activeCategory === "congtrinhthucte"
-      ? [...products].reverse()
-      : products
-          .filter((item) => getCategoryKey(item.category) === activeCategory)
-          .reverse();
+      ? products.slice(0, 6)
+      : products.filter(
+          (item) => getCategoryKey(item.category) === activeCategory
+        );
 
   return (
-    <section id="productPage">
-      <div className="product-list-bg ">
-        <img src="/image-tiktok2.jpg" alt="product-list-bg" />
-      </div>
-      <div className="product-list-wrapper product-list-container paddings innerWidth">
+    <section id="productHome ">
+      <div className="product-list-wrapper paddings innerWidth ">
         <div className="product-list-head">
           <span className="primaryText">DỰ ÁN ĐÃ THỰC HIỆN</span>
           <div className="product-list-categories">
@@ -71,73 +68,47 @@ const Product = () => {
               className="product-card"
               key={project.id || idx}
               style={{ cursor: "pointer" }}
-              onClick={() =>
-                navigate(`/product/${project.id}`, {
-                  state: { product: project },
-                })
-              }
+              onClick={() => navigate(`/product/${project.id}`, { state: { product: project } })}
             >
               <div className="product-card-img-wrapper">
-                <img
-                  src={project.image}
-                  alt={project.images?.name || project.name}
-                />
+                <img src={project.image} alt={project.images?.name || project.name} />
                 <div
                   className="product-card-info"
                   style={{
-                    position: "absolute",
+                    position: 'absolute',
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    background: "rgba(255,255,255,0.90)",
-                    padding: "16px 24px",
+                    background: 'rgba(255,255,255,0.90)',
+                    padding: '16px 24px',
                     borderBottomLeftRadius: 8,
                     borderBottomRightRadius: 8,
                   }}
                 >
-                  <span
-                    className="primaryText r-title"
-                    style={{
-                      fontWeight: 700,
-                      fontSize: 18,
-                      textTransform: "uppercase",
-                    }}
-                  >
+                  <span className='primaryText r-title' style={{ fontWeight: 700, fontSize: 18, textTransform: 'uppercase' }}>
                     {project.name}
                   </span>
-                  <div 
+                  <div
                   className="r-info"
                     style={{
-                      display: "grid",
-                      gridTemplateColumns: "0.3fr 1fr",
+                      display: 'grid',
+                      gridTemplateColumns: '0.3fr 1fr',
                       gap: 0,
                       marginTop: 16,
-                      textAlign: "left",
-                      alignItems: "center",
+                      textAlign: 'left',
+                      alignItems: 'center'
                     }}
                   >
-                    <span
-                      className="secondaryText r-size"
-                      style={{ color: "#666666", fontWeight: 500 }}
-                    >
+                    <span className='secondaryText r-size' style={{ color: '#666666', fontWeight: 500 }}>
                       Diện tích:
                     </span>
-                    <span
-                      className="secondaryText r-size"
-                      style={{ color: "#666666", fontWeight: 500 }}
-                    >
+                    <span className='secondaryText r-size' style={{ color: '#666666', fontWeight: 500 }}>
                       {project.size}m&#178;
                     </span>
-                    <span
-                      className="secondaryText r-price"
-                      style={{ color: "#666666", fontWeight: 500 }}
-                    >
+                    <span className='secondaryText r-price' style={{ color: '#666666', fontWeight: 500 }}>
                       Vị trí:
                     </span>
-                    <span
-                      className="secondaryText r-price"
-                      style={{ color: "#666666", fontWeight: 500 }}
-                    >
+                    <span className='secondaryText r-price' style={{ color: '#666666', fontWeight: 500 }}>
                       {project.add}
                     </span>
                   </div>
@@ -146,9 +117,12 @@ const Product = () => {
             </div>
           ))}
         </div>
+        <div className="btn-text-more">
+          <a href="/product">Xem thêm</a>
+        </div>
       </div>
     </section>
   );
 };
 
-export default Product;
+export default ProductHome;

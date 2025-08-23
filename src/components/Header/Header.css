@@ -24,6 +24,21 @@
 .button{
     font-size: 1rem;
 }
+.dropdown-product{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+@media (min-width:768px) and (max-width:1024px){
+    .h-menu{
+        gap: 1rem;
+    }
+    .h-menu a{
+        font-size: 0.8rem;
+    }
+    
+}
 @media (max-width: 768px) {
     .menu-icon{
         display: block;
@@ -31,7 +46,7 @@
     .h-menu{
         position: absolute;
         top: 3rem;
-        right: 4rem;
+        right: 2rem;
         background: #000000b3;
         flex-direction: column;
         gap: 2rem;
@@ -44,7 +59,7 @@
         font-size: 0.85rem;
     }
     .h-container img{
-        width: 45px;
+        width: 100px;
     }
     .h-container{
         padding-top: 0.5em;
@@ -57,7 +72,7 @@
 }
 /* Header.css */
 .h-wrapper {
-    position: fixed;
+    position: static;
     top: 0;
     width: 100%;
     background-color: transparent;

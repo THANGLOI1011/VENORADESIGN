@@ -7,11 +7,11 @@ import {
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
 import "./App.css";
-import Companies from "./components/Companies/Companies";
+import ProductHome from "./components/ProductHome/ProductHome";
 import Residencies from "./components/Residensies/Residencies";
 import Value from "./components/Value/Value";
 import Contact from "./components/Contact/Contact";
-import Getstarted from "./components/Getstarted/Getstarted";
+import ContactHome from "./components/ContactHome/ContactHome";
 import Footer from "./components/Footer/Footer";
 import Product from "./components/Product/Product";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
@@ -51,16 +51,16 @@ function App() {
         document.title = "Venora Design";
         break;
       case "/product":
-        document.title = "Product";
+        document.title = "Dự Án";
         break;
       case "/product/:id":
-        document.title = "Product Details";
+        document.title = "Chi Tiết Dự Án";
         break;
       case "/video-viral":
-        document.title = "Viral Videos";
+        document.title = "Video Viral";
         break;
       case "/video/:id":
-        document.title = "Video Details";
+        document.title = "Chi Tiết Video";
         break;
       case "/login":
         document.title = "Login";
@@ -69,13 +69,13 @@ function App() {
         document.title = "Admin Dashboard";
         break;
       case "/contact":
-        document.title = "Contact";
+        document.title = "Liên Hệ";
         break;
-      case "/value":
-        document.title = "About Us";
+      case "/about":
+        document.title = "Về Chúng Tôi";
         break;
       case "/tiktok-products":
-        document.title = "All TikTok Products";
+        document.title = "Tất Cả Video";
         break;
       default:
         document.title = "";
@@ -103,9 +103,7 @@ function App() {
                 <div data-aos="fade-up">
                   <Hero />
                 </div>
-                <div data-aos="fade-right">
-                  <Companies />
-                </div>
+                
                 <div data-aos="fade-up">
                   <About id="about" />
                 </div>
@@ -113,10 +111,13 @@ function App() {
                   <Residencies id="typical" />
                 </div>
                 <div data-aos="fade-right">
-                  <Getstarted id="started" />
+                  <ProductHome id="productHome" />
                 </div>
                 <div data-aos="fade-up">
-                  <TikTok />
+                  <TikTok id="tiktok" />
+                </div>
+                <div data-aos="fade-up">
+                  <ContactHome />
                 </div>
               </>
             }
@@ -127,7 +128,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/tiktok/:videoId" element={<TikTokDetail />} />
           <Route path="/tiktok-products" element={<TikTokProduct />} />
-          <Route path="/value" element={<Value />} />
+          <Route path="/about" element={<Value />} />
           <Route
             path="/admin"
             element={

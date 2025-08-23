@@ -22,42 +22,84 @@ const Residencies = () => {
   }, []);
 
   return (
-    <section id='typical' className='r-wrapper r-container-s'>
+    <section id='typical' className='r-wrapper paddings r-container-s'>
       
-      <div className='paddings innerWidth r-container'>
+      <div className='innerWidth  r-container'>
         <div className="r-head flexColStart">
-          <span className='orangeText'>Dự Án Tiêu Biểu</span>
-          <span className='primaryText'>Xây Dựng Tiêu Biểu</span>
+          <span className='primaryText'>DỰ ÁN NỔI BẬT</span>
         </div>
-        <Swiper {...SliderSettings}>
+        <Swiper
+          slidesPerView={3}
+          spaceBetween={16}
+          navigation={false}
+          {...SliderSettings}
+        >
           <SliderButtons />
           {projects.map((project, i) => (
             <SwiperSlide key={i}>
               <Link 
                 to={`/product/${project.id}`} 
                 state={{ product: project }} 
-                className='flexColStart r-card r-card-banner'
+                className='r-card-banner'
                 onClick={() => window.scrollTo(0, 0)}  
+                style={{ display: 'block', height: '100%' }}
               >
-                <img id='img-banner' src={project.image} alt={project.name} />
-                <div className="info-product flexColStart">
-                <span className='secondaryText r-price flexCenter'>
-                  <HiLocationMarker style={{color:'var(--text-yellow)'}} />
-                  <span>{project.add}</span>
-                </span>
-                <span className='primaryText r-title'>{project.name}</span>
-                <span className='secondaryText r-size'>Diện tích: {project.size}m&#178;</span>
+                <div className="r-card-img-wrapper" style={{ position: 'relative', borderRadius: 8, overflow: 'hidden' }}>
+                  <img
+                    id='img-banner'
+                    src={project.image}
+                    alt={project.name}
+                    style={{ width: '100%', height: '390px', objectFit: 'cover', display: 'block' }}
+                  />
+                  <div
+                    className="r-card-info"
+                    style={{
+                      position: 'absolute',
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: 'rgba(255,255,255,0.90)',
+                      padding: '16px 24px',
+                      borderBottomLeftRadius: 8,
+                      borderBottomRightRadius: 8,
+                    }}
+                  >
+                    <span className='primaryText r-title' style={{ fontWeight: 700, fontSize: 18,textTransform: 'uppercase' }}>
+                      {project.name}
+                    </span>
+                    <div
+                    className='r-info'
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: '0.3fr 1fr',
+                        gap: 0,
+                        marginTop: 16,
+                        textAlign: 'left',
+                        alignItems: 'center'
+                      }}
+                    >
+                      <span className='secondaryText r-size' style={{ color: '#666666', fontWeight: 500 }}>
+                        Diện tích:
+                      </span>
+                      <span className='secondaryText r-size' style={{ color: '#666666', fontWeight: 500 }}>
+                        {project.size}m&#178;
+                      </span>
+                      <span className='secondaryText r-price' style={{ color: '#666666', fontWeight: 500 }}>
+                        Vị trí:
+                      </span>
+                      <span className='secondaryText r-price' style={{ color: '#666666', fontWeight: 500 }}>
+                        {project.add}
+                      </span>
+                    </div>
+                  </div>
+                  
                 </div>
+                <div className='r-card-text btn-text-more'>
+                      <a href="">Khám phá ngay</a>
+                  </div>
               </Link>
             </SwiperSlide>
           ))}
-          <SwiperSlide>
-            <div className='more'>
-              <div className='r-card-view-more'>
-              <Link to="/products" className="button">Xem thêm</Link>
-            </div>
-            </div>
-          </SwiperSlide>
         </Swiper>
       </div>
     </section>

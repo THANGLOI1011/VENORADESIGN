@@ -59,36 +59,40 @@ const TikTokDetail = () => {
 
   return (
     <div data-aos="fade-up" className="bg-tiktok-detail">
-      <div className="tiktok-detail-layout innerWidth paddings">
-        {/* Video chi tiết */}
-        <div className="tiktok-detail">
-          <iframe
-            src={`https://www.tiktok.com/embed/${videoId}`}
-            width="100%"
-            height="100%"
-            style={{ maxWidth: "100%", border: "none",paddingTop: "60px" }}
-            allow="encrypted-media; picture-in-picture"
-            allowFullScreen
-          />
-        </div>
+      <div className="tiktok-detail-bg">
+        <div className="tiktok-detail-center">
+          <div className="tiktok-detail-layout">
+            {/* Video chi tiết */}
+            <div className="tiktok-detail">
+              <iframe
+                src={`https://www.tiktok.com/embed/${videoId}`}
+                width="340"
+                height="800"
+                style={{ border: "none", borderRadius: "16px", background: "#fff" }}
+                allow="encrypted-media; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
 
-        {/* Video liên quan */}
-        <div className="related-videos">
-          <h1 className="related-videos-title">Video khác</h1>
-          <div className="related-video-list">
-            {relatedVideos.map((video, index) => (
-              <Link to={`/tiktok/${video.videoId}`} key={index} className="related-video-item">
-                <img
-                  src={video.thumbnailUrl || "https://via.placeholder.com/300"}
-                  alt="TikTok Thumbnail"
-                  className="related-video-thumbnail"
-                />
-                <div className="related-video-info  flexColStart">
-                  <h3 className="related-video-title ">{video.title}</h3>
-                  <p className="related-video-hashtags">{video.hashtags}</p>
-                </div>
-              </Link>
-            ))}
+            {/* Video liên quan */}
+            <div className="related-videos paddings">
+              <h1 className="related-videos-title">VIDEO KHÁC</h1>
+              <div className="related-video-list">
+                {relatedVideos.map((video, index) => (
+                  <Link to={`/tiktok/${video.videoId}`} key={index} className="related-video-item">
+                    <img
+                      src={video.thumbnailUrl || "https://via.placeholder.com/300"}
+                      alt="TikTok Thumbnail"
+                      className="related-video-thumbnail"
+                    />
+                    <div className="related-video-info">
+                      <h3 className="related-video-title">{video.title}</h3>
+                      <p className="related-video-hashtags">{video.hashtags}</p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

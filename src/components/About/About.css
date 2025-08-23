@@ -1,9 +1,9 @@
 .u-container{
     background-color:var(--bg-white);
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 1rem;
+    width: 50%;
+    text-align: justify;
 }
 .text-more{
     display: flex;
@@ -11,10 +11,11 @@
     align-items: center;
     background-color: transparent;
     border: 1px solid var(--green-button);
-    border-radius: 18px;
-    padding:8px 24px;
+    border-radius: 4px;
+    padding:16px 40px;
     cursor: pointer;
     transition: all 200ms ease-in;
+    margin-top: 40px;
 }
 .text-more:hover {
     background-color: var(--green-button);
@@ -37,15 +38,16 @@
 .text-about{
     color: var(--green-button) !important;
     text-align: center;
+    margin-top: 4px;
+    margin-bottom: 56px;
+    font-size: 2rem;
+    font-weight: 700;
 }
 .flexcenter{
     display: flex;
     justify-content: center;
     align-items: center; 
     flex-wrap: wrap;
-}
-.slogantext{
-    text-align: center;
 }
 .img-value{
     width: 100vw;
@@ -63,11 +65,84 @@
 }
 .view-more{
     color: var(--green-button);
-    font-size: 0.9rem;
+    font-size: 1rem;
 
+}
+.about-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.about-image{
+    margin-top: 120px;
+    width: 100vw;
+    height: 500px;
+}
+.about-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    justify-content: center;
+    width: 100%;
+}
+.left-container{
+    width: 50%;
+    display:grid;
+    gap: 24px;
+    text-align: justify;
+    
+}
+.btn-text-more{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 40px;
+    cursor: pointer;
+}
+.btn-text-more a{
+    padding: 16px 40px;
+    border-radius: 6px;
+    border: 1px solid var(--green-button);
+    font-size: 1rem;
+    color: var(--green-button);
+    transition: all 200ms ease-in;
+    font-weight: 500;
+
+
+}
+.btn-text-more a:hover{
+    background-color: var(--green-button);
+    color: #fff;
+}
+.about-container{
+    padding: 120px 0;
 }
 @media (max-width: 767px) {
     .img-value img{
         height: 100%;
+    }
+    .about-image{
+        margin-top: 0;
+    }
+    .about-container{
+        padding: 60px 0;
+    }
+    .text-about{
+        margin-bottom: 24px;
+    }
+    .left-container span:first-child{
+        display: none;
+    }
+    .left-container{
+        gap: 16px;
+    }
+    .about-image{
+        height: 300px;
+    }
+    .about-image img{
+        border-radius: 0;
     }
 }

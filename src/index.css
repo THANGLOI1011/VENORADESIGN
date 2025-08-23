@@ -1,12 +1,12 @@
 :root {
-  --primary: #1f3e72;
+  --primary: #1f3e72;;
   --secondary: rgba(255, 255, 255, 0.78);
   --black: #131110;
   --blue-gradient: linear-gradient(97.05deg, #4066ff 3.76%, #2949c6 100%);
   --orange-gradient: linear-gradient(270deg, #ffb978 0%, #ff922d 100%);
   --blue: #4066ff;
   --text-yellow:#ffd000;
-  --green-button:#026d34;
+  --green-button:#0d0d0d;
   --lightBlue: #eeeeff;
   --shadow: 0px 23px 21px -8px rgba(136, 160, 255, 0.25);
   --color-bg: #f5f5f5;
@@ -26,7 +26,6 @@ a {
 .paddings {
   padding: 1.5rem;
 }
-
 .innerWidth {
   width: 100%;
 }
@@ -76,8 +75,8 @@ a {
 }
 
 .primaryText {
-  color: #026d34;
-  font-weight: 600;
+  color: #009B50;
+  font-weight: 700;
   font-size: 2rem;
 }
 .primarytext {
@@ -87,12 +86,12 @@ a {
 }
 
 .secondaryText {
-  color: rgb(140 139 139);
-  font-size: 0.9rem;
+  color:#666666;
+  font-size: 1rem;
 }
 .secondarytext {
-  color: rgb(140 139 139);
-  font-size: 0.9rem;
+  color:#666666;
+  font-size: 1rem;
 }
 .orangeText {
   color: var(--text-yellow);
@@ -124,7 +123,7 @@ transition: all 200ms ease-in;
 /* media queries */
 @media (min-width: 1536px) {
   .innerWidth {
-    max-width: 1280px;
+    max-width: 1534px;
     margin: auto;
   }
 }
@@ -156,6 +155,11 @@ transition: all 200ms ease-in;
   }
   .secondarytext{
     font-size: 0.6rem;
+  }
+ 
+  .btn-text-more a {
+    font-size: 0.8rem !important;
+    padding: 12px 24px !important;
   }
 
 }

@@ -1,100 +1,152 @@
-.c-container{
-    justify-content: space-between;
+.contact-team-img {
+  width: 100vw;
+    height: 50vh;
+  background: #fff;
+  text-align: center;
 }
-.c-container-s{
-    margin-top: 120px;
-}
-.c-container>div{
-    flex: 1;
-}
-.c-right{
+.contact-team-img img {
     width: 100%;
-    display: flex;
-    justify-content: end;
+    height: 100%;
+  object-fit: cover;
 }
-.c-left{
-    gap: 0.5rem;
-    max-width: -webkit-fill-available;
+.contact-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
-.contactModes{
-    margin-top: 2rem;
-    gap: 1rem;
+.contact-box-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin: 0 auto 80px auto;
 }
-.contactModes .row{
-    gap: 1.5rem;
+.contact-box {
+  background: #f8f8f8;
+  border-radius: 16px;
+  padding: 32px 16px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.2s;
 }
-.mode{
-    width: 16rem;
-    padding: 1rem;
-    border: 0.8px solid rgba(128, 128, 128, 0.143) ;
-    border-radius: 5px;
-    gap: 1rem;
-    transition: all 300ms ease-in;
-    overflow: hidden;
-    background-color: #fff  ;
-
+.contact-box:hover {
+  box-shadow: 0 4px 16px rgba(0,155,80,0.08);
 }
-.mode .button{
-    width: 100%;
-    color: var(--green-button);
-    font-size: 0.9rem;
-    font-weight: 600;
+.contact-icon {
+  font-size: 2.2rem;
+  color: #009B50;
+  margin-bottom: 18px;
 }
-.mode >:nth-child(1){
-    width: 100%;
-    gap: 1.6rem;
+.contact-box-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 8px;
 }
-.mode .detail .primaryText{
+.contact-box-value {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 400;
+  word-break: break-word;
+}
+.contact-bottom-row {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 32px;
+}
+.contact-map {
+  flex: 1.2;
+  min-width: 280px;
+}
+.contact-form {
+  flex: 1;
+  background: #f8f8f8;
+  padding: 40px 74px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.contact-form-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0d0d0d;
+  margin-bottom: 18px;
+  text-align: left;
+}
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.contact-form input,
+.contact-form textarea {
+  width:100% ;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 24px;
+  font-size: 1rem;
+  background: #fff;
+  resize: none;
+}
+.contact-form-btn {
+  background: #009B50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 24px;
+  transition: background 0.2s;
+  float: right;
+}
+.contact-form-btn:hover {
+  background: #007a3a;
+}
+.contact-form-inputs{
+  text-align: start;
+  margin-bottom: 24px;
+}
+.contact-form-inputs p{
+  font-size: 1rem;
+  color: #0d0d0d;
+  font-weight: 500;
+    margin-bottom: 8px;
+}
+@media ( min-width: 768px) and (max-width: 1024px) {
+  .contact-box-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .contact-bottom-row {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .contact-map iframe {
+    height: 220px;
+  }
+  .contact-icon{
+    font-size: 3rem !important;
+  }
+}
+@media (max-width: 767px) {
+  .contact-box-list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .contact-team-img img {
+    width: 98vw;
+  }
+  .contact-form {
+    padding: 40px 24px;
+  }
+  .contact-form-title{
     font-size: 1rem;
-    font-weight: 550;
-
-}
-.mode:hover{
-    scale: 1.1;
-    box-shadow: var(--shadow);
-}
-.mode .button:hover{
-    background: var(--green-button);
-    color: #fff;
-    scale: 0.8;
-}
-#phone{
-    color: rgb(3, 164, 3);
-}
-#facebook{
-    color: #0866FF;
-}
-#tiktok{
-    color: black;
-}
-#gmail{
-    color: #C5221F;
-}
-@media (max-width:1280px){
-    .c-container{
-        flex-direction: column;
-    }
-    .c-right{
-        justify-content: center;
-    }
-    .c-left{
-        width: 100%;
-    }
-    .contactModes{
-        width: 100%;
-    }
-    .row{
-        flex-direction: column;
-        width: 100%;
-    }
-    .mode{
-        width: 100%;
-        padding: 18px;
-    }
-    .c-container{
-        padding: 7px 0px 7px 0px;
-    }
-    .inner-container .button{
-        width: 100%;
-    }
+  }
 }

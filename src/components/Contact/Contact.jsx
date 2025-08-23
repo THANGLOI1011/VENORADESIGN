@@ -1,100 +1,97 @@
-import React from 'react'
-import './Contact.css'
-import { MdCall } from 'react-icons/md'
-import { SiGmail } from 'react-icons/si'
-import { FaFacebook, FaTiktok } from 'react-icons/fa'
+import React from 'react';
+import './Contact.css';
+import { IoLocationSharp } from "react-icons/io5";
+import { MdEmail } from "react-icons/md";
+import { ImPhone } from "react-icons/im";
+import { BsFacebook } from "react-icons/bs";
+
+const CONTACT_LIST = [
+  {
+    icon: <IoLocationSharp />,
+    title: 'Địa Chỉ',
+    value: '667 Văn Tiến Dũng, Hòa Xuân, Cẩm Lệ, Đà Nẵng',
+    link: 'https://maps.app.goo.gl/295F6qScGcWYUi3PA',
+  },
+  {
+    icon: <MdEmail />,
+    title: 'Email',
+    value: 'contact.venoradesign@gmail.com',
+    link: 'mailto:contact.venoradesign@gmail.com',
+  },
+  {
+    icon: <ImPhone />,
+    title: 'Điện Thoại',
+    value: '094 873 90 75',
+    link: 'tel:0948739075',
+  },
+  {
+    icon: <BsFacebook />,
+    title: 'Facebook',
+    value: 'Venora Design',
+    link: 'https://web.facebook.com/profile.php?id=61556348097034',
+  },
+];
 
 const Contact = () => {
   return (
-    <div data-aos="fade-up">
-      <section id='contact' className='c-wrapper '>
-        <div className=" innerWidth flexCenter c-container c-container-s">
-          <div className="flexColStart c-left paddings ">
-            <span className='orangeText'>Liên Hệ Với Chúng Tôi</span>
-            <span className='primaryText'>Liên Hệ Dễ Dàng</span>
-            <span className='secondaryText'>Chúng tôi luôn sẵn sàng hỗ trợ bạn và mang lại những dịch vụ tốt nhất.</span>
-            
-            <div className="flexColStart contactModes">
-              {/* First row */}
-              <div className="flexStart row">
-                {/* Phone */}
-                <div className="flexColCenter mode">
-                  <div className="flexStart">
-                    <div id='phone' className="flexCenter icon">
-                      <MdCall size={25} />
-                    </div>
-                    <div className="flexColStart detail">
-                      <span className='primarytext'>Điện Thoại</span>
-                      <span className='secondaryText'>070 804 0810</span>
-                    </div>
-                  </div>
-                  <div className="flexCenter button">
-                    <a href='tel:0708040810' className="btn btn-primary">Gọi Ngay</a>
-                  </div>
-                </div>
-                {/* Gmail */}
-                <div className="flexColCenter mode">
-                  <div className="flexStart">
-                    <div id='gmail' className="flexCenter icon">
-                      <SiGmail size={25} />
-                    </div>
-                    <div className="flexColStart detail">
-                      <span className='primarytext'>Gmail</span>
-                      <span className='secondaryText'>contact.venoradesign@gmail.com</span>
-                    </div>
-                  </div>
-                  <div className="flexCenter button">
-                    <a href='mailto:contact.venoradesign@gmail.com' className="btn btn-primary">Gửi Ngay</a>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Second row */}
-              <div className="flexStart row">
-                {/* Facebook */}
-                <div className="flexColCenter mode">
-                  <div className="flexStart">
-                    <div id='facebook' className="flexCenter icon">
-                      <FaFacebook size={25} />
-                    </div>
-                    <div className="flexColStart detail">
-                      <span className='primarytext'>Facebook</span>
-                      <span className='secondaryText'>Venora Design</span>
-                    </div>
-                  </div>
-                  <div className="flexCenter button">
-                    <a href='https://www.facebook.com/profile.php?id=61556348097034' target='_blank' className="btn btn-primary">Theo Dõi</a>
-                  </div>
-                </div>
-                {/* Tiktok */}
-                <div className="flexColCenter mode">
-                  <div className="flexStart">
-                    <div className="flexCenter icon">
-                      < FaTiktok size={25} />
-                    </div>
-                    <div className="flexColStart detail">
-                      <span className='primarytext'>Tiktok</span>
-                      <span className='secondaryText'>@venoradesign</span>
-                    </div>
-                  </div>
-                  <div className="flexCenter button">
-                    <a href='https://www.tiktok.com/@venoradesign?is_from_webapp=1&sender_device=pc' target='_blank' className="btn btn-primary">Theo Dõi</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <div>
+      {/* Ảnh nhóm trên cùng */}
+      <div className="contact-team-img">
+        <img src="/about.jpg" alt="Venora Team" />
+      </div>
+      <section className='contact-section paddings'>
+        <div className="contact-title">LIÊN HỆ VỚI CHÚNG TÔI</div>
+        <div className="contact-box-list  innerWidth">
+          {CONTACT_LIST.map((item, idx) => (
+            <a
+              className="contact-box"
+              key={idx}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="contact-icon">{item.icon}</div>
+              <div className="contact-box-title">{item.title}</div>
+              <div className="contact-box-value">{item.value}</div>
+            </a>
+          ))}
+        </div>
+        {/* Map và form tư vấn miễn phí */}
+        <div className="contact-bottom-row innerWidth">
+          <div className="contact-map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3835.557086738852!2d108.21151031145178!3d15.98448994163549!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31421a67f5e3940b%3A0x5dc3f293c3aee39f!2zNjY3IFbEg24gVGnhur9uIETFqW5nLCBIb8OgIFh1w6JuLCBD4bqpbSBM4buHLCDEkMOgIE7hurVuZyA1NTAwMDAsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1755605897434!5m2!1svi!2s"
+              width="100%"
+              height="100%"
+              style={{ border: 0}}
+              allowFullScreen=""
+              loading="lazy"
+              title="Venora Map"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
-          
-          {/* Right side */}
-          <div className="c-right paddings">
-            <div className="img-container">
-              <img src="./contact.jpg" alt="contact" />
+          <div className="contact-form">
+            <div className="contact-form-title">TƯ VẤN MIỄN PHÍ</div>
+            <div className="contact-form-desc">
+              <div className="contact-form-inputs">
+                <p>Tên của bạn</p>
+                <input type="text" placeholder="Nhập tên của bạn" />
+              </div>
+              <div className="contact-form-inputs">
+                <p>Số điện thoại</p>
+                <input type="text" placeholder=" Nhập số điện thoại" />
+              </div>
+              <div className="contact-form-inputs">
+                <p>Yêu cầu của bạn</p>
+                <textarea placeholder="Nhập yêu cầu của bạn..." rows={4}></textarea>
+              </div>
+              <button type="submit" className="contact-form-btn ">GỬI</button>
             </div>
           </div>
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

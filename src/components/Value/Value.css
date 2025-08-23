@@ -1,92 +1,140 @@
-
-.v-container>div{
-    flex: 1;
+.about-team-wrapper {
+  background: #fff;
 }
-.v-right{
-    gap: 0.5rem;
-}
-.accordion{
-    margin-top: 2rem;
-    border: none;
-}.accordionItem{
-    background-color: white;
-    border: 0.8px solid rgba(128, 128, 128, 0.143);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-.accordionItem .expanded{
-    box-shadow: var(--shadow);
-    border-radius: 6px;
-}
-.accordionButton{
-    background-color: white;
-    padding: 1rem;
-    width: 100%;
-    justify-content: space-between;
-    cursor: pointer;
-}
-.icon{
-    padding: 7px;
-    background: #eeeeff;
-    border-radius: 5px;
-}
-.v-left,.v-right{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 120px;
-}
-.img-container-value{
+.about-team-img{
     width: 100vw;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.img-container-value img{
-    object-fit:cover;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
+    height: 50vh;
+    overflow: hidden;
     background-position: center;
-    filter: brightness(60%);
 }
-.textslogan{
-    position: absolute;
-    color: #fff;
-    font-size: 2rem;
+
+.about-team-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
 }
-.textslogan h1{
-    font-size: 2.5rem;
-    font-weight: 900;
+.about-team-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
 }
-.textslogan p{
-    font-size: 1.25rem;
-    margin-top: 7px;
-    color: #fff;
+.about-team-title {
+  font-size: 2rem;
+  font-weight: 700;
+    color: #0D0D0D;
+  margin-top: 80px;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
 }
-.accordionButton .primaryText{
-    font-size: 1.1rem;
+.about-team-desc {
+  font-size: 1rem;
+  color: #666666;
+  margin-bottom: 80px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 500;
+  line-height: 20px;
 }
-@media (max-width:1024px) {
-    .v-container{
-        flex-direction: column;
-    }
-    @media (max-width:768px) {
-        .accordionButton .primaryText{
-            font-size: 1rem;
-        }
-        .textslogan h1{
-            font-size: 1rem;
-            font-weight: 900;
-        }
-        .textslogan p{
-            font-size: 0.8rem;
-        }
-        .v-left{
-            margin-top: 0px;
-        }
-        
-    }
+.about-team-divider {
+  border: none;
+  border-top: 1px solid #eee;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.about-team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px 24px;
+  justify-content: center;
+  justify-items: center;
+  margin-top: 32px;
+  padding-bottom: 80px;
+}
+.about-team-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 0px 0px 20px 0px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.about-team-card-img img {
+  width: 240px;
+  height: 330px;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  margin-bottom: 12px;
+  background: #eee;
+}
+.about-team-card-name {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  color: #0D0D0D;
+}
+.about-team-card-pos {
+  font-size: 0.9rem;
+  font-weight: 500;;
+  color: #666;
+}
+.about-team-row-main {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+@media ( min-width: 768px) and (max-width: 1024px) {
+  .about-team-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 12px;
+  }
+  .about-team-row-main {
+    gap: 16px;
+  }
+  .about-team-title{
+    font-size: 1.5rem;
+    margin-top: 60px;
+
+  }
+  .about-team-desc{
+    margin-bottom: 30px;
+  }
+}
+@media (max-width: 767px) {
+  .about-team-grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px 8px;
+    
+  }
+  .about-team-row-main {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .about-team-row-main .about-team-card {
+    width: 90vw;
+    max-width: 240px;
+  }
+  .about-team-grid .about-team-card {
+    width: 90vw;
+    max-width: 240px;
+  }
+  
+  .about-team-title{
+    font-size: 1rem;
+    margin-top: 60px;
+
+  }
+  .about-team-desc{
+    font-size: 0.7rem;
+    margin-bottom: 40px;
+  }
+  .about-team-card-pos{
+    font-size: 0.7rem;
+  }
 }

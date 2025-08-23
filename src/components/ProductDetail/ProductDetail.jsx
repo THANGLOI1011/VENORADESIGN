@@ -26,7 +26,12 @@ const ProductDetail = () => {
   }, []);
 
   return (
-    <div data-aos="fade-up" className="product-detail-container innerWidth">
+    <div data-aos="fade-up" className='product-detail-image'>
+      <div className="product-detail-image-container">
+        <img src={images[0]} alt={product.name} />
+      </div>
+    
+    <div  className="product-detail-container  innerWidth">
       <div className="product-detail-name">
         <h1 className='primaryText flexCenter'>{product.name}</h1>
         <div className="product-detail-name-deps">
@@ -48,6 +53,7 @@ const ProductDetail = () => {
           </a>
         ))}
       </div>
+    </div>
     </div>
   );
 };

@@ -477,6 +477,27 @@ const Admin = () => {
                 </p>
               </span>
               <span>
+                Tổng video
+                <br />
+                <div className="text-small">Tổng số video có trên website</div>
+                <div className="text-all-project">{tiktokVideos.length}</div>
+                <p
+                  onClick={() => {
+                    setIsTiktokTableVisible(!isTiktokTableVisible);
+                    if (!isTiktokTableVisible) {
+                      setTimeout(() => {
+                        document
+                          .getElementById("admin-right-tiktok")
+                          .scrollIntoView({ behavior: "smooth" });
+                      }, 200); // Delay nhỏ để đảm bảo UI cập nhật trước khi cuộn
+                    }
+                  }}
+                  id="detail"
+                >
+                  {isTiktokTableVisible ? "Ẩn chi tiết" : "Xem chi tiết"}
+                </p>
+              </span>
+              <span>
                 Tổng ảnh hero
                 <br />
                 <div className="text-small">
@@ -501,27 +522,7 @@ const Admin = () => {
                   {isHeroTableVisible ? "Ẩn chi tiết" : "Xem chi tiết"}
                 </p>
               </span>
-              <span>
-                Tổng video
-                <br />
-                <div className="text-small">Tổng số video có trên website</div>
-                <div className="text-all-project">{tiktokVideos.length}</div>
-                <p
-                  onClick={() => {
-                    setIsTiktokTableVisible(!isTiktokTableVisible);
-                    if (!isTiktokTableVisible) {
-                      setTimeout(() => {
-                        document
-                          .getElementById("admin-right-tiktok")
-                          .scrollIntoView({ behavior: "smooth" });
-                      }, 200); // Delay nhỏ để đảm bảo UI cập nhật trước khi cuộn
-                    }
-                  }}
-                  id="detail"
-                >
-                  {isTiktokTableVisible ? "Ẩn chi tiết" : "Xem chi tiết"}
-                </p>
-              </span>
+              
             </div>
             <div className="admin-right-container">
               {/* 1 */}

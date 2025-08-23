@@ -1,52 +1,53 @@
 import React from 'react';
+import { FaFacebookF, FaTiktok, FaPhoneAlt, FaInstagram, FaEnvelope,FaPinterest  } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
-const Footer = () => {
-  return (
-    <div data-aos="fade-up">
-      <section className="f-wrapper innerWidth">
-        <div className=" footer innerWidth">
-          <div className="footer-container">
-            <div className="footer-menu">
-              <div className="footer-menu-img">
-                <img src="/logovenorablack@2x@2x.png" alt="Venora Logo" />
-              </div>
-            </div>
-            <div className="footer-menu">
-              <div className="footer-menu-copyright">
-                <h1 className='primaryText'>Copyright</h1>
-                <p className='secondaryText line-height'>&copy; Venora architects and construction 2023</p>
-                <p className='secondaryText line-height'>Design & Development by Venora</p>
-              </div>
-            </div>
-            <div className="footer-menu">
-              <div className="footer-menu-contact">
-                <h1 className='primaryText'>Liên Hệ</h1>
-                <p className='secondaryText line-height'>667 Văn Tiến Dũng 3, Hòa Xuân, Cẩm Lê, Đà Nẵng, Da Nang, Vietnam</p>
-                <p className='secondaryText line-height'><a href="mailto:contact.venoradesign@gmail.com">Email:contact.venoradesign@gmail.com</a></p>
-                <p className='secondaryText line-height'><a href="tel:0948739075">Điện Thoại: 094 873 90 75</a></p>
-              </div>
-            </div>
-            <div className="footer-menu">
-              <div className="footer-menu-maps">
-                <h1 className='primaryText'>Bản đồ</h1>
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3835.5570867376287!2d108.2115156758913!3d15.984489941699286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31421a67f5e3940b%3A0x5dc3f293c3aee39f!2zNjY3IFbEg24gVGnhur9uIETFqW5nLCBIb8OgIFh1w6JuLCBD4bqpbSBM4buHLCDEkMOgIE7hurVuZyA1NTAwMDAsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1751432334170!5m2!1svi!2s"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <div className="footer-end">
-        <p className='secondaryText'>&copy; Bản quyền thuộc về Venora Design & Contructions</p>
-      </div>
+const SOCIALS = [
+  { icon: <FaFacebookF />, link: 'https://www.facebook.com/profile.php?id=61556348097034&locale=vi_VN' },
+  { icon: <FaTiktok />, link: 'https://www.tiktok.com/@venoradesign' },
+  { icon: <FaPhoneAlt />, link: 'tel:0948739075' },
+  { icon: <FaInstagram />, link: 'https://www.instagram.com/venoradesign/?fbclid=IwY2xjawMRQ7VleHRuA2FlbQIxMABicmlkETFyWjlVS1JDQmJRYjFiVTg2AR4AK5SH4McF7L9jYZ6b5d3YzZWWqn5uhllRLx0d5FOhRoAfAB4uMJ6tfCvrQQ_aem_vIpmhboXUV7wIzobbfjEyA#' },
+  { icon: <FaEnvelope />, link: 'mailto:contact.venoradesign@gmail.com' },
+  { icon: <FaPinterest />, link: 'https://www.pinterest.com/kientrucvenora/?fbclid=IwY2xjawMRQ6xleHRuA2FlbQIxMABicmlkETFyWjlVS1JDQmJRYjFiVTg2AR4PFJ-_jr448xLQqQPuif7hilRCjoj5ZEyifxSmYBoNDj7qnAbnjKRNf0XBRQ_aem_gp6rXeXlZ_3ZngZyznPGTQ' },
+];
+
+const MENUS = [
+  { label: 'VỀ CHÚNG TÔI', to: '/about' },
+  { label: 'DỰ ÁN', to: '/product' },
+  { label: 'VIDEO CÔNG TRÌNH', to: '/video' },
+  { label: 'TIN TỨC', to: '/news' },
+  { label: 'LIÊN HỆ', to: '/contact' },
+];
+
+const Footer = () => (
+  <footer className="footer-dark paddings">
+    <div className="footer-socials">
+      {SOCIALS.map((item, idx) => (
+        <a
+          key={idx}
+          href={item.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="footer-icon"
+        >
+          {item.icon}
+        </a>
+      ))}
     </div>
-  );
-}
+    <div className="footer-brand">Venora Design</div>
+    <nav className="footer-menu-list">
+      {MENUS.map((menu, idx) => (
+        <Link key={idx} to={menu.to} className="footer-menu-link">
+          {menu.label}
+        </Link>
+      ))}
+    </nav>
+    <div className="footer-copyright">
+      <span>© 2020 bản quyền thuộc về Venora Design & Contructions</span><br />
+      <span>Tất cả quyền được bảo lưu. Phát triển bởi Venora Design & Contructions</span>
+    </div>
+  </footer>
+);
 
 export default Footer;

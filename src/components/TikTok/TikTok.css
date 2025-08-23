@@ -1,19 +1,30 @@
 .video-container {
   display: flex;
-  flex-wrap: wrap; /* Cho phép các item xuống dòng khi không đủ không gian */
-  justify-content: space-between; /* Căn đều các item */
+  flex-wrap: wrap;
   row-gap: 1rem;
+  justify-content: space-between;
 }
-  
+.tiktok{
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
 .video-item {
-  width: 24%; /* Hiển thị 4 item trên 1 hàng ở màn hình lớn */
+  width: calc(33.33% - 1rem); /* Hiển thị 3 item trên 1 hàng ở màn hình lớn */
   text-align: center;
+
   transition: transform 0.3s ease; /* Hiệu ứng khi hover */
 }
 
 
   .t-head{
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    align-items: center;
+    
+  }
+  .t-head span:nth-child(1){
+    color: var(--green-button);
+    font-size: 2rem;
+    font-weight: 700;
   }
   
   .video-thumbnail-container {
@@ -21,12 +32,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* max-width: 270px; */
     width: 100%;
+    height: 530px;
     border-radius: 10px;
     text-align: center;
-    padding: 16px;
-    padding-bottom: 10px;
+    padding: 24px;
     overflow: hidden; /* Đảm bảo nội dung không tràn ra ngoài */
     background-color: #fff;
     transition: transform 0.3s ease; /* Hiệu ứng khi hover */
@@ -34,7 +44,7 @@
   
   .video-thumbnail {
     width: 100%;;
-    height: 250px;
+    height: 400px;
     display: block;
     transition: opacity 0.3s ease, transform 0.3s ease;
     background-position: center;
@@ -81,6 +91,7 @@
     margin-top: 8px;
     padding: 5px;
     text-align: center;
+    color: #0d0d0d;
     width: 100%;
     border-radius: 0 0 10px 10px;
     white-space: nowrap;
@@ -117,7 +128,7 @@
   }
   .video-hashtags {
     font-size: 12px; /* Chữ nhỏ hơn tiêu đề */
-    color: #888; /* Màu xám */
+    color: #666666; /* Màu xám */
     margin-top: 5px;
     text-align: start;
     line-height: 1.4;
@@ -128,9 +139,19 @@
     text-overflow: ellipsis; /* Thêm dấu "..." nếu nội dung bị cắt */
     width: 100%; /* Đảm bảo hashtag chiếm toàn bộ chiều rộng */;
   }
-  @media (max-width: 1024px) {
-    .video-container {
-      grid-template-columns: repeat(2, 1fr); /* Hiển thị 2 item trên 1 hàng */
+  @media  ( min-width: 768px) and (max-width: 1024px) {
+    .tiktok{
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+    .tiktok-items span:nth-child(1){
+      font-size: 1.7rem;
+    }
+    .video-container{
+
+    }
+    .video-item {
+      width: calc(50% - 1rem);
     }
   }
 @media (max-width: 767px) {
@@ -138,11 +159,15 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-  }
 
+  }
+  .video-hashtags{
+    /* font-size: 10px !important; */
+  }
   .video-thumbnail-container {
     width: 100%; /* Đảm bảo item chiếm toàn bộ chiều rộng của cột */
-    padding: 0px;
+    height: 100%; /* Đảm bảo item chiếm toàn bộ chiều cao của cột */
+    padding: 1rem;
   }
 
   .video-thumbnail {
@@ -159,10 +184,15 @@
     width: 100%; /* Đảm bảo nút chiếm toàn bộ chiều rộng */
   }
   .video-item {
-    width: 48%; /* Đảm bảo item chiếm toàn bộ chiều rộng của cột */
+    width: 100%; /* Đảm bảo item chiếm toàn bộ chiều rộng của cột */
   }
   .video-title{
     padding: 0px;
+    /* font-size: 12px !important; */
+  }
+  .tiktok{
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
  
 

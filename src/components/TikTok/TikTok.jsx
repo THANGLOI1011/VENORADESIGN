@@ -6,7 +6,7 @@ import { CgPlayButtonO } from "react-icons/cg";
 
 const TikTok = () => {
   const [videos, setVideos] = useState([]);
-  const [visibleCount, setVisibleCount] = useState(8);
+  const [visibleCount, setVisibleCount] = useState(9);
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -65,15 +65,15 @@ const TikTok = () => {
     fetchVideos();
   }, []);
   const loadMoreVideos = () => {
-    setVisibleCount((prev) => prev + 8);
+    setVisibleCount((prev) => prev + 9);
   };
 
   return (
+    <section id="tiktok">
     <div data-aos="fade-up" className="bg-tiktok">
-      <div className="tiktok innerWidth paddings">
+      <div className="tiktok paddings innerWidth">
         <div className="tiktok-items flexColStart t-head">
-          <span className="orangeText">Trải nghiệm</span>
-          <span className="primaryText">Video viral TikTok</span>
+          <span className="primaryText ">VIDEO CÔNG TRÌNH </span>
         </div>
         <div className="video-container">
             {[...videos].reverse().slice(0, visibleCount).map((video, index) => (
@@ -99,15 +99,16 @@ const TikTok = () => {
             </Link>
           ))}
         </div>
-        <div className="btn-width">
+        <div className="btn-width ">
           {visibleCount < videos.length && (
-            <button className="button" onClick={loadMoreVideos}>
-              Xem thêm
-            </button>
+            <div className=" btn-text-more " onClick={loadMoreVideos}>
+              <a>Xem thêm</a>
+            </div>
           )}
         </div>
       </div>
     </div>
+    </section>
   );
 };
 

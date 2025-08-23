@@ -47,21 +47,6 @@ const Hero = () => {
       <section className="hero-wrapper">
         <div className="flexCenter hero-container">
           <div className="flexColStart hero-left">
-            <div className="hero-title">
-              <div className="orange-circle"></div>
-              <motion.h1
-                initial={{ y: '2rem', opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{
-                  duration: 2,
-                  type: 'spring',
-                }}
-              >
-                Venora
-                <br />
-                Architects
-              </motion.h1>
-            </div>
           </div>
           <div className="flexCenter">
             <div className="image-container">
