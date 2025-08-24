@@ -60,7 +60,7 @@ const TikTokDetail = () => {
   return (
     <div data-aos="fade-up" className="bg-tiktok-detail">
       <div className="tiktok-detail-bg">
-        <div className="tiktok-detail-center paddings ">
+        <div className="tiktok-detail-center paddings innerWidth ">
           <div className="tiktok-detail-layout ">
             {/* Video chi tiết */}
             <div className="tiktok-detail">
