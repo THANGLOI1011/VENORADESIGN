@@ -17,7 +17,7 @@ import { FaPlus } from "react-icons/fa";
 import "./Admin.css";
 import { FaWindowClose } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
-
+import { FaChevronDown } from "react-icons/fa";
 const Admin = () => {
   const [form, setForm] = useState({
     name: "",
@@ -28,6 +28,7 @@ const Admin = () => {
     image: "",
     size: "",
     images: [""],
+    category: "congtrinhthucte",
   });
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [userName, setUserName] = useState("");
@@ -300,6 +301,7 @@ const Admin = () => {
         image: "",
         size: "",
         images: [""],
+        category: "congtrinhthucte",
       });
       setEditingProjectId(null);
     }
@@ -308,7 +310,8 @@ const Admin = () => {
     e.preventDefault();
 
     // Kiểm tra tất cả các trường
-    const { name, id, year, add, deps, image, size, images } = form;
+    const { name, id, year, add, deps, image, size, images, category } = form;
+    const filteredImages = images.filter((img) => img.trim() !== "");
     if (
       !name ||
       !id ||
@@ -317,7 +320,8 @@ const Admin = () => {
       !deps ||
       !image ||
       !size ||
-      images.some((img) => img.trim() === "")
+      filteredImages.length === 0 ||
+      !category
     ) {
       alert("Vui lòng điền đầy đủ thông tin vào tất cả các trường.");
       return;
@@ -337,7 +341,8 @@ const Admin = () => {
       deps,
       image,
       size,
-      images: images.filter((img) => img.trim()),
+      images: filteredImages,
+      category,
     };
 
     if (editingProjectId) {
@@ -355,6 +360,7 @@ const Admin = () => {
             image: "",
             size: "",
             images: [""],
+            category: "congtrinhthucte",
           });
           setProjects(
             projects.map((proj) =>
@@ -381,6 +387,7 @@ const Admin = () => {
             image: "",
             size: "",
             images: [""],
+            category: "congtrinhthucte",
           });
           setProjects([...projects, projectData]);
           window.location.reload();
@@ -468,18 +475,18 @@ const Admin = () => {
           <div className="admin-projects">
             <div className="admin-left">
               <span>
-                Tổng dự án
+                Dự Án
                 <br />
-                <div className="text-small">Tổng số dự án có trên website</div>
+                <div className="text-small">Tổng dự án có trên website</div>
                 <div className="text-all-project">{projects.length}</div>
                 <p onClick={toggleAdminRight} id="detail">
                   {isAdminRightVisible ? "Ẩn chi tiết" : "Xem chi tiết"}
                 </p>
               </span>
               <span>
-                Tổng video
+                Video
                 <br />
-                <div className="text-small">Tổng số video có trên website</div>
+                <div className="text-small">Tổng video có trên website</div>
                 <div className="text-all-project">{tiktokVideos.length}</div>
                 <p
                   onClick={() => {
@@ -498,14 +505,12 @@ const Admin = () => {
                 </p>
               </span>
               <span>
-                Tổng ảnh hero
+                Hình Ảnh
                 <br />
                 <div className="text-small">
-                  Tổng số ảnh hero có trên website
+                  Tổng hình ảnh có trên website
                 </div>
-                <div className="text-all-project">
-                  {heroImages.length}
-                </div>{" "}
+                <div className="text-all-project">{heroImages.length}</div>{" "}
                 <p
                   onClick={() => {
                     setIsHeroTableVisible(!isHeroTableVisible);
@@ -522,7 +527,6 @@ const Admin = () => {
                   {isHeroTableVisible ? "Ẩn chi tiết" : "Xem chi tiết"}
                 </p>
               </span>
-              
             </div>
             <div className="admin-right-container">
               {/* 1 */}
@@ -535,9 +539,9 @@ const Admin = () => {
                 <div className="admin-right">
                   <div className="admin-right-title">
                     <h2>
-                      Tất cả các dự án{" "}
+                      Dự Án{" "}
                       <div className="text-small">
-                        Tổng dự án đang hoạt động
+                        Dự án đang hoạt động
                       </div>
                     </h2>
                     <h3
@@ -550,7 +554,7 @@ const Admin = () => {
                       </div>
                     </h3>
                   </div>
-                  {projects.map((project) => (
+                  {[...projects].reverse().map((project) => (
                     <div key={project.id} className="project-item">
                       <h3>{project.name}</h3>
 
@@ -584,9 +588,9 @@ const Admin = () => {
                 <div className="admin-right">
                   <div className="admin-right-title">
                     <h2>
-                      Video TikTok{" "}
+                      Video {" "}
                       <div className="text-small">
-                        Tổng video đang hoạt động
+                        Video đang hoạt động
                       </div>
                     </h2>
                     <h3
@@ -599,7 +603,7 @@ const Admin = () => {
                       </div>
                     </h3>
                   </div>
-                  {tiktokVideos.map((video) => (
+                  {[...tiktokVideos].reverse().map((video) => (
                     <div key={video.id} className="project-item">
                       <h3>{extractCleanTitle(video.embedCode)}</h3>
                       <div className="btn-product">
@@ -623,8 +627,8 @@ const Admin = () => {
                 <div className="admin-right">
                   <div className="admin-right-title">
                     <h2>
-                      Ảnh Hero
-                      <div className="text-small">Tổng ảnh hero</div>
+                      Hình Ảnh{" "}
+                      <div className="text-small">Hình ảnh đang hoạt động</div>
                     </h2>
                     <h3
                       onClick={() => {
@@ -647,7 +651,7 @@ const Admin = () => {
                         <img
                           src={img}
                           alt={`Hero ${idx + 1}`}
-                          style={{ width: 60, marginRight: 10 }}
+                          
                         />
                         <div className="btn-product">
                           <button
@@ -678,118 +682,155 @@ const Admin = () => {
           </div>
           {isFormOpen && (
             <div className="overlay" onClick={toggleForm}>
-              <div
-                className="admin-form-popup"
-                onClick={(e) => e.stopPropagation()}
-              >
+              <div className="admin-form-popup" onClick={(e) => e.stopPropagation()}>
                 <button className="close-btn" onClick={toggleForm}>
                   &times;
                 </button>
                 <form onSubmit={handleSubmit} className="admin-form">
                   <label>
-                    Tên dự án:
+                    <h4>Tên dự án</h4>
                     <input
                       type="text"
                       name="name"
                       value={form.name}
                       onChange={handleInputChange}
+                      placeholder="Nhập tên dự án"
                       required
                     />
                   </label>
+                  {/* Bỏ input id, id vẫn tự sinh ra từ tên dự án */}
                   <label>
-                    ID:
-                    <input
-                      type="text"
-                      name="id"
-                      value={form.id}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </label>
-                  <label>
-                    Năm:
+                    <h4>Năm</h4>
                     <input
                       type="text"
                       name="year"
                       value={form.year}
                       onChange={handleInputChange}
+                      placeholder="Nhập năm"
                       required
                     />
                   </label>
                   <label>
-                    Địa chỉ:
+                    <h4>Địa chỉ</h4>
                     <input
                       type="text"
                       name="add"
                       value={form.add}
                       onChange={handleInputChange}
+                      placeholder="Nhập địa chỉ dự án"
                       required
                     />
                   </label>
                   <label>
-                    Mô tả:
+                    <h4>Mô tả</h4>
                     <textarea
                       name="deps"
                       value={form.deps}
                       onChange={handleInputChange}
+                      placeholder="Nhập mô tả dự án"
+                      className="textarea-deps"
                       required
-                      style={{ height: "150px" }}
+                      style={{ height: "150px", borderColor: "#ddd",borderRadius:5,padding:24 }}
                     />
                   </label>
                   <label>
-                    Diện tích:
+                    <h4>Diện tích</h4>
                     <input
                       type="text"
                       name="size"
                       value={form.size}
                       onChange={handleInputChange}
+                      placeholder="Nhập diện tích dự án"
                       required
                     />
                   </label>
                   <label>
-                    URL ảnh chính:
+  <h4>Loại dự án</h4>
+  <div style={{ position: "relative", width: "100%" }}>
+    <select
+      name="category"
+      value={form.category}
+      onChange={handleInputChange}
+      required
+      className="category-select custom-arrow"
+      style={{ width: "100%", paddingRight: 48 }}
+    >
+      <option value="nhapho">Nhà phố</option>
+      <option value="congtrinhthucte">Công trình thực tế</option>
+      <option value="nhavuon">Nhà vườn</option>
+    </select>
+    <FaChevronDown
+      style={{
+        position: "absolute",
+        right: 24,
+        top: "50%",
+        transform: "translateY(-50%)",
+        pointerEvents: "none",
+        color: "#333",
+        fontSize: 14,
+      }}
+    />
+  </div>
+</label>
+                  <label>
+                    <h4>Ảnh dự án</h4>
                     <input
                       type="text"
                       name="image"
                       value={form.image}
                       onChange={handleInputChange}
+                      placeholder="Nhập link ảnh đại diện"
                       required
                     />
                   </label>
                   <label>
-                    URLS thêm ảnh:
-                    {form.images.map((image, index) => (
-                      <div key={index} className="image-input-wrapper">
-                        <input
-                          type="text"
-                          value={image}
-                          onChange={(e) =>
-                            handleImageChange(index, e.target.value)
+                    <h4>Thêm ảnh phụ</h4>
+                    <div style={{ display: "flex", gap: 8 }}>
+                      <input
+                        type="text"
+                        value={form.newImageUrl || ""}
+                        onChange={e => setForm({ ...form, newImageUrl: e.target.value })}
+                        placeholder="Nhập link ảnh phụ"
+                      />
+                      <button
+                        type="button"
+                        className="add-image-button btnadd"
+                        onClick={() => {
+                          if (form.newImageUrl && form.newImageUrl.trim()) {
+                            setForm({
+                              ...form,
+                              images: [...form.images, form.newImageUrl],
+                              newImageUrl: ""
+                            });
                           }
-                          placeholder={`Image URL ${index + 1}`}
-                          required
-                        />
-                        {index === form.images.length - 1 && (
+                        }}
+                      >
+                        <FaPlus />
+                        Thêm
+                      </button>
+                    </div>
+                    <div className="image-thumbnails" style={{ marginTop: 12, display: "flex", gap: 28, flexWrap: "wrap",justifyContent:"center" }}>
+                      {form.images.filter(img => img.trim()).map((img, idx) => (
+                        <div key={idx} style={{ position: "relative", display: "inline-block" }}>
+                          <img src={img} alt={`Ảnh phụ ${idx + 1}`} style={{ width: 80, height: 80, objectFit: "cover", borderRadius: 6, border: "1px solid #eee" }} />
                           <button
                             type="button"
-                            onClick={addImageField}
-                            className="add-image-button btnadd"
+                            onClick={() => {
+                              setForm({
+                                ...form,
+                                images: form.images.filter((_, i) => i !== idx)
+                              });
+                            }}
+                            style={{ position: "absolute", top: -8, right: -8, background: "#fff", border: "1px solid #ccc", borderRadius: "50%", width: 22, height: 22, cursor: "pointer", color: "#d00", fontWeight: "bold" }}
                           >
-                            +
+                            ×
                           </button>
-                        )}
-                        <button
-                          type="button"
-                          onClick={() => removeImageField(index)}
-                          className="remove-image-button"
-                        >
-                          -
-                        </button>
-                      </div>
-                    ))}
+                        </div>
+                      ))}
+                    </div>
                   </label>
-                  <button type="submit">
-                    {editingProjectId ? "Cập nhật" : "Thêm"}
+                  <button className="btn-add" type="submit">
+                    {editingProjectId ? "CẬP NHẬT" : "THÊM DỰ ÁN"}
                   </button>
                 </form>
               </div>
@@ -809,16 +850,16 @@ const Admin = () => {
                 </button>
                 <form onSubmit={handleTiktokSubmit} className="admin-form">
                   <label>
-                    Link TikTok:
+                    <h4>Link TikTok</h4>
                     <textarea
                       name="embedCode"
                       value={tiktokForm.embedCode}
                       onChange={handleTiktokInputChange}
                       required
-                      style={{ height: "70px" }}
+                      style={{ height: "120px", borderColor: "#ddd",borderRadius:5,padding:24,outline:"none",color:"#0d0d0d" }}
                     />
                   </label>
-                  <button type="submit">Thêm Video</button>
+                  <button type="submit">THÊM VIDEO</button>
                 </form>
               </div>
             </div>
@@ -864,23 +905,23 @@ const Admin = () => {
                   className="admin-form"
                 >
                   <label>
-                    Đường dẫn ảnh Hero:
+                    <h4>Đường dẫn ảnh Hero</h4>
                     <input
                       type="text"
                       value={editingHeroValue}
-                      onChange={e => setEditingHeroValue(e.target.value)}
+                      onChange={(e) => setEditingHeroValue(e.target.value)}
                       required
                     />
                   </label>
                   <div style={{ margin: "10px 0" }}>
                     <img
                       src={editingHeroValue}
-                      alt="Preview"
+                      alt="Ảnh Hero"
                       style={{ width: 120 }}
                     />
                   </div>
                   <button type="submit" className="btn-edit">
-                    {isAddingHeroImage ? "Thêm" : "Lưu"}
+                    {isAddingHeroImage ? "THÊM" : "LƯU"}
                   </button>
                 </form>
               </div>
