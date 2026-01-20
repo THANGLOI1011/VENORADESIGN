@@ -5,9 +5,10 @@ import { db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 
 const CATEGORY_LIST = [
+  { key: "nhavuon", label: "Nhà vườn" },
+  { key: "villa", label: "Villa" },
   { key: "nhapho", label: "Nhà phố" },
   { key: "congtrinhthucte", label: "Công trình thực tế" },
-  { key: "nhavuon", label: "Nhà vườn" },
 ];
 
 const getCategoryKey = (category) => {
@@ -15,12 +16,13 @@ const getCategoryKey = (category) => {
   if (category === "nhapho") return "nhapho";
   if (category === "congtrinhthucte") return "congtrinhthucte";
   if (category === "nhavuon") return "nhavuon";
+  if (category === "villa") return "villa";
   return "other";
 };
 
 const ProductHome = () => {
   const [products, setProducts] = useState([]);
-  const [activeCategory, setActiveCategory] = useState("congtrinhthucte");
+  const [activeCategory, setActiveCategory] = useState("nhavuon");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,12 +38,9 @@ const ProductHome = () => {
     return () => unsubscribe();
   }, []);
 
-  const filteredProducts =
-    activeCategory === "congtrinhthucte"
-      ? products.slice(0, 6)
-      : products.filter(
-          (item) => getCategoryKey(item.category) === activeCategory
-        );
+  const filteredProducts = products
+    .filter((item) => getCategoryKey(item.category) === activeCategory)
+    .reverse();
 
   return (
     <section id="productHome ">

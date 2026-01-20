@@ -13,11 +13,6 @@ const TEAM_LIST = [
     image: "https://res.cloudinary.com/dxo8lnvlm/image/upload/v1755592637/1G2A9779_iwjztu.jpg",
   },
   {
-    name: "VÕ QUỐC VIỆT",
-    position: "CO-FOUNDER & SALE",
-    image: "/viet.jpg",
-  },
-  {
     name: "HUỲNH TRUNG TRUNG",
     position: "TRIỂN KHAI KIẾN TRÚC",
     image: "/trung.jpg",
@@ -51,7 +46,7 @@ const TEAM_LIST = [
 
 const Value = () => {
   // 3 người quan trọng đầu tiên
-  const mainMembers = TEAM_LIST.slice(0, 3);
+  const mainMembers = TEAM_LIST.slice(0, 2);
   // Các thành viên còn lại
   const otherMembers = TEAM_LIST.slice(3);
 

@@ -28,7 +28,7 @@ const Admin = () => {
     image: "",
     size: "",
     images: [""],
-    category: "congtrinhthucte",
+    category: "nhapho",
   });
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [userName, setUserName] = useState("");
@@ -758,6 +758,7 @@ const Admin = () => {
       <option value="nhapho">Nhà phố</option>
       <option value="congtrinhthucte">Công trình thực tế</option>
       <option value="nhavuon">Nhà vườn</option>
+      <option value="villa">Villa</option>
     </select>
     <FaChevronDown
       style={{

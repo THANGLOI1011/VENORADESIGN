@@ -35,11 +35,9 @@ const ProductDetail = () => {
       <div className="product-detail-name">
         <h1 className='primaryText flexCenter'>{product.name}</h1>
         <div className="product-detail-name-deps">
-        <p className=' line-height txt-project'>Dự án: {product.name}</p>
         {/* <p className='textDeps'>Mô tả:</p> */}
         <p className='secondaryText txtDeps'>{product.deps}</p>
-        <ul className='info-product-list'>    
-        <li className='secondaryText line-height'>Thiết kế: Công Ty Venora Design</li>
+        <ul className='info-product-list'>
         <li className='secondaryText line-height'>Năm: {product.year}</li>
         <li className='secondaryText line-height'>Vị trí: {product.add}</li>
         <li className='secondaryText line-height'>Diện tích: {product.size}m&#178;</li>
