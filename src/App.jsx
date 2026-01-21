@@ -81,7 +81,7 @@ function App() {
         document.title = "";
     }
   }, [location]);
-  useEffect(() => {z
+  useEffect(() => {
     AOS.init({
       duration: 800,
       once: true,

@@ -24,7 +24,7 @@
     object-position: center;
   }
   .txtDeps{
-    line-height: 1.6rem;
+    line-height: 1.2rem;
   }
   .image-gallery {
     display: flex;
@@ -101,6 +101,9 @@
   }
   .txt-project{
     font-size: 0.5rem;
+  }
+  .product-detail-container{
+    padding: 32px;
   }
 }
   

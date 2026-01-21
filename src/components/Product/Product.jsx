@@ -22,7 +22,7 @@ const getCategoryKey = (category) => {
 
 const Product = () => {
   const [products, setProducts] = useState([]);
-  const [activeCategory, setActiveCategory] = useState("nhavuon");
+  const [activeCategory, setActiveCategory] = useState("congtrinhthucte");
   const navigate = useNavigate();
 
   useEffect(() => {

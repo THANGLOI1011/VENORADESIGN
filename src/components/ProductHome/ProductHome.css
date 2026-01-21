@@ -105,14 +105,14 @@
   }
   .category-btn{
     font-size: 0.7rem !important;
-    padding: 12px 24px !important;
+    padding: 12px 20px !important;
   }
   .product-list-wrapper{
     padding-top: 60px;
     padding-bottom: 60px;
   }
   .product-list-categories{
-    gap: 16px;
+    gap: 8px;
   }
   .r-info{
     margin-top: 8px !important;
